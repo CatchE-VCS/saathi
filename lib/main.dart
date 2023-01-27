@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:saathi/screens/verification_screen.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(Verify());
 }
+
+
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
