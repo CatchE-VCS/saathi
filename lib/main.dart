@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:saathi/screens/password_reset.dart';
+import 'package:saathi/screens/splash_screen.dart';
 import 'package:saathi/screens/verification_screen.dart';
 
 void main() {
-  runApp(Verify());
+  runApp(const SplashScreen());
 }
 
 

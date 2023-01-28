@@ -10,6 +10,24 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        body: Column(
+          children: [
+            SizedBox(height: 400,),
+            Text('Welcome Back!',
+              style: TextStyle(fontSize: 26,fontWeight: FontWeight.bold
+              ),
+            ),
+            TextFormField(
+              key: formkey,
+              controller: emailController,
+
+            )
+          ],
+        ),
+      ),
+    );
   }
 }
