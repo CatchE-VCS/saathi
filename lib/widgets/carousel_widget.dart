@@ -13,20 +13,41 @@ class Carousel extends StatelessWidget {
         children: [
           Text(
             startText,
-            style: const TextStyle(fontSize: 23, fontWeight: FontWeight.w500, color: Colors.white
-            ),
+            style: const TextStyle(
+                fontSize: 23, fontWeight: FontWeight.w500, color: Colors.white),
           ),
-          SizedBox(height: 30,),
+          SizedBox(
+            height: 30,
+          ),
           Row(
-            children: const [
-              SizedBox(width: 13,),
-              ElevatedButton(onPressed: null, child: Text('Skip', style: TextStyle(color: Colors.white),)),
-              SizedBox(width: 13,),
-              ElevatedButton(onPressed: null, child: Text('Next', style: TextStyle(color: Colors.white),)),
-              SizedBox(width: 13,),
+            children: [
+              SizedBox(
+                width: 13,
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).pushReplacementNamed('/home');
+                },
+                child: Text(
+                  'Skip',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+              SizedBox(
+                width: 13,
+              ),
+              ElevatedButton(
+                onPressed: null,
+                child: Text(
+                  'Next',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+              SizedBox(
+                width: 13,
+              ),
             ],
           )
-
         ],
       ),
     );
