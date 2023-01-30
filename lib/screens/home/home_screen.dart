@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:saathi/utils/data.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 import 'package:saathi/utils/colors.dart';
+import 'package:saathi/utils/data.dart';
 import 'package:saathi/widgets/custom_app_bar.dart';
 import 'package:saathi/widgets/custom_buttons.dart';
-import 'package:responsive_builder/responsive_builder.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -18,6 +18,7 @@ class _HomeScreenState extends State<HomeScreen> {
   bool _showAppNavBar = true;
   late ScrollController _scrollController;
   bool _isScrollDown = false;
+  int like = 0;
 
   @override
   void initState() {

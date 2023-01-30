@@ -17,8 +17,8 @@ class Data {
         image: "assets/illperson.png",
         likes: "800"),
     UserPostModel(
-        name: "Anushka Singh",
-        profileUrl: "assets/profile2.jpg",
+        name: "Anonymous",
+        profileUrl: "assets/profile4.jpg",
         headline: "Breast cancer survivor",
         tags: "#Hopeiseverything",
         description:
@@ -30,9 +30,9 @@ class Data {
         image: "assets/qwerty.png",
         likes: "20k"),
     UserPostModel(
-        name: "Kshitiz Agarwal",
-        profileUrl: "assets/profile3.jpg",
-        headline: "Freelancer",
+        name: "Yash Sharma",
+        profileUrl: "assets/profile2.jpg",
+        headline: "Cancer survivor",
         tags: "#food #packaging #impact #sustainability #hotels",
         description:
             "Serving breakfast in #hotels .One way it's nicely packed with hygiene efforts.Do you know the amount of chemicals emitting from the #plastic  covering above the hot #food becoming one of the major cause towards #cancer ??Same plastic later becoming #microplastics  waste is a different #impact.What alternatives we can suggest ??",
@@ -42,6 +42,59 @@ class Data {
         isOnline: true,
         image: "assets/food.png",
         likes: "230"),
+    UserPostModel(
+        name: "Shehroz Jamal",
+        profileUrl: "assets/profile1.jpg",
+        headline: "Cancer survivor ",
+        tags:
+            "#positivity #motivation #learning #progress #development #networking #connections #networking #linkedin #nevergiveup #staypositive #staystrong #positiveattitude",
+        description:
+            "Last year I weighed 9 stone, I was diagnosed with stage 4 cancer. I refused conventional treatment and the oncologist said I’d have 12 months to live. 💪🏼",
+        isVideoPost: false,
+        comments: "100",
+        video: "",
+        isOnline: false,
+        image: "assets/images/img1.png",
+        likes: "800"),
+    UserPostModel(
+        name: "Arslan nasir",
+        profileUrl: "assets/profile1.jpg",
+        headline: "Cancer survivor",
+        tags: "#fight",
+        description:
+            "Gosh, it's very odd knowing all my insides are actually inside me again after 9 months of a #stoma. Next step, farting. Then food. #NHS #Cancer #Surgery",
+        isVideoPost: false,
+        comments: "1k",
+        video: "",
+        isOnline: true,
+        image: "assets/img2.png",
+        likes: "20k"),
+    UserPostModel(
+        name: "Mohsin Ali",
+        profileUrl: "assets/profile1.jpg",
+        headline: "cervical cancer",
+        tags: "#cancer #cervical #fight #disease #health",
+        description:
+            "This week is Cervical Cancer Prevention Week and the time is now to get checked out. ",
+        isVideoPost: false,
+        comments: "100",
+        video: "",
+        isOnline: true,
+        image: "assets/img3.png",
+        likes: "230"),
+    UserPostModel(
+        name: "Sahar Salimi",
+        profileUrl: "assets/profile1.jpg",
+        headline: "cancer survivor",
+        tags: "#Respect #SadioMane #PayBack #Love",
+        description:
+            "These 2 women are very brave. Me and mom both fighting cancer. 58 and 85",
+        isVideoPost: false,
+        comments: "500",
+        video: "",
+        isOnline: false,
+        image: "assets/img4.png",
+        likes: "10k"),
   ];
   static final userProfile = UserModel(
       headline:
