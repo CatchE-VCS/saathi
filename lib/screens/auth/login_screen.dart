@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:saathi/screens/auth/password_reset.dart';
+import 'package:saathi/screens/auth/signup_screen.dart';
+import 'package:saathi/screens/home/home_screen.dart';
 // import 'package:google_fonts/google_fonts.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -60,15 +63,19 @@ class _LoginScreenState extends State<LoginScreen> {
             SizedBox(
               height: 15,
             ),
-            Container(
-                alignment: Alignment.centerRight,
-                margin: EdgeInsets.only(left: 120),
-                child: Text(
-                  "Forgot Password ?",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                  ),
-                )),
+            GestureDetector(
+              onTap: () => Navigator.pushReplacement(context,
+                  MaterialPageRoute(builder: (context) => PasswordReset())),
+              child: Container(
+                  alignment: Alignment.centerRight,
+                  margin: EdgeInsets.only(left: 120),
+                  child: Text(
+                    "Forgot Password ?",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  )),
+            ),
             SizedBox(
               height: 3,
             ),
@@ -128,7 +135,7 @@ class _LoginScreenState extends State<LoginScreen> {
               )),
             ]),
             SizedBox(
-              height: 10,
+              height: 25,
             ),
             ElevatedButton(
                 onPressed: () {},
@@ -146,7 +153,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 )),
             SizedBox(
-              height: 25,
+              height: 65,
             ),
             Container(
               height: 50,
@@ -158,12 +165,16 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
-                    "Log in",
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16,
-                        color: Colors.white),
+                  GestureDetector(
+                    child: Text(
+                      "Log in",
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                          color: Colors.white),
+                    ),
+                    onTap: () => Navigator.pushReplacement(context,
+                        MaterialPageRoute(builder: (context) => HomeScreen())),
                   ),
                   Icon(
                     Icons.arrow_forward_rounded,
@@ -173,7 +184,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ),
             SizedBox(
-              height: 5,
+              height: 10,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -182,10 +193,14 @@ class _LoginScreenState extends State<LoginScreen> {
                   "Don't have an account ? ",
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
-                Text(
-                  "Sign up now",
-                  style: TextStyle(
-                      color: Colors.indigo, fontWeight: FontWeight.bold),
+                GestureDetector(
+                  onTap: () => Navigator.pushReplacement(context,
+                      MaterialPageRoute(builder: (context) => SignUpScreen())),
+                  child: Text(
+                    "Sign up now",
+                    style: TextStyle(
+                        color: Colors.indigo, fontWeight: FontWeight.bold),
+                  ),
                 )
               ],
             )
