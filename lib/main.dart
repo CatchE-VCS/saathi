@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:saathi/screens/auth/login_screen.dart';
 import 'package:saathi/screens/auth/signup_screen.dart';
 import 'package:saathi/screens/home/home_screen.dart';
-import 'package:saathi/screens/splash_screen.dart';
 
 void main() {
-  runApp(const LoginScreen());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -18,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const SplashScreen(),
+      home: LoginScreen(),
       routes: {
         '/login': (context) => const LoginScreen(),
         '/signup': (context) => const SignUpScreen(),
