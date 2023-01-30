@@ -272,7 +272,7 @@ class _LoginScreenState extends State<LoginScreen> {
         _isLoading = false;
       });
       if (!mounted) return;
-      return showSnackBarr('Could not log you in!!\n Try again .....', context);
+      return showSnackBarr(res, context);
     } else {
       if (!mounted) return;
       showSnackBarr(

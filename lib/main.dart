@@ -6,6 +6,7 @@ import 'package:saathi/screens/auth/signup_screen.dart';
 import 'package:saathi/screens/home/home_screen.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
 );
