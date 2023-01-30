@@ -39,6 +39,7 @@ dependencies:
   pinput: ^2.2.23
   google_fonts: ^4.0.0
   carousel_slider: ^4.2.1
+  lottie: ^2.2.0
 
 dev_dependencies:
   flutter_test:
