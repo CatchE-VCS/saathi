@@ -81,7 +81,7 @@ class AuthController {
   }
 
   Future<String> signUpUser(
-      String email, String pass, String fname, String lname) async {
+      String email, String pass, String fname) async {
     String res = 'Some error occured';
     try {
       UserCredential userCredential =
@@ -104,7 +104,6 @@ class AuthController {
             .doc(userCredential.user!.uid)
             .set({
           'fname': fname,
-          'lname': lname,
           'uid': userCredential.user!.uid,
           'email': email,
           'userImage': downloadUrl,

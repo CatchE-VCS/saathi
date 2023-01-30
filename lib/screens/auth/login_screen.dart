@@ -163,31 +163,31 @@ class _LoginScreenState extends State<LoginScreen> {
             SizedBox(
               height: 65,
             ),
-            Container(
-              height: 50,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                color: Colors.indigo,
-                borderRadius: BorderRadius.circular(15),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  GestureDetector(
-                    child: Text(
+            GestureDetector(
+              onTap: () async => await loginUsers(),
+              child: Container(
+                height: 50,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: Colors.indigo,
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
                       "Log in",
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 16,
                           color: Colors.white),
                     ),
-                    onTap: () async => await loginUsers(),
-                  ),
-                  Icon(
-                    Icons.arrow_forward_rounded,
-                    color: Colors.white,
-                  )
-                ],
+                    Icon(
+                      Icons.arrow_forward_rounded,
+                      color: Colors.white,
+                    )
+                  ],
+                ),
               ),
             ),
             SizedBox(
