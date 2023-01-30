@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:saathi/utils/data.dart';
 import 'package:saathi/utils/colors.dart';
+import 'package:saathi/widgets/custom_app_bar.dart';
 import 'package:saathi/widgets/custom_buttons.dart';
 import 'package:responsive_builder/responsive_builder.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -12,7 +14,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-
   final _post = Data.postList;
   bool _showAppNavBar = true;
   late ScrollController _scrollController;
@@ -50,14 +51,28 @@ class _HomeScreenState extends State<HomeScreen> {
     _scrollController.dispose();
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(),
-      body: Column(
-        children: [],
-      ),
-    );
+    return ResponsiveBuilder(
+        builder: (BuildContext context, SizingInformation sizingInformation) {
+      return Container(
+        color: Colors.black12,
+        child: Column(
+          children: [
+            _showAppNavBar
+                ? CustomAppBar(
+                    sizingInformation: sizingInformation,
+                  )
+                : Container(
+                    height: 0.0,
+                    width: 0.0,
+                  ),
+            _listPostWidget(sizingInformation),
+          ],
+        ),
+      );
+    });
   }
 
   Widget _listPostWidget(SizingInformation sizingInformation) {
