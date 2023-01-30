@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:saathi/screens/auth/login_screen.dart';
 import 'package:saathi/utils/size_config.dart';
 
 import 'splash_content.dart';
@@ -94,6 +95,36 @@ class _BodyState extends State<Body> {
                     ),
                   ),
                   const Spacer(flex: 1),
+                  GestureDetector(
+                    onTap: () => Navigator.pushReplacement(context,
+                        MaterialPageRoute(builder: (context) => LoginScreen())),
+                    child: Container(
+                      width: 250,
+                      height: 50,
+                      margin: EdgeInsets.only(bottom: 20),
+                      decoration: BoxDecoration(
+                          color: Colors.indigo,
+                          borderRadius: BorderRadius.circular(25)),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Get Started",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          SizedBox(
+                            width: 3,
+                          ),
+                          Icon(
+                            Icons.arrow_forward_rounded,
+                            color: Colors.white,
+                          )
+                        ],
+                      ),
+                    ),
+                  )
                 ]),
               ),
             ),
