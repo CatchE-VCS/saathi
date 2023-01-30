@@ -5,7 +5,7 @@ import 'package:saathi/screens/home/home_screen.dart';
 import 'package:saathi/screens/splash_screen.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const LoginScreen());
 }
 
 class MyApp extends StatelessWidget {
