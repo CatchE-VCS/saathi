@@ -161,20 +161,22 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: Row(
                         children: [
                           Container(
-                              width: 25,
-                              height: 25,
-                              child: Image.asset('assets/icons/like_icon.png')),
+                            width: 25,
+                            height: 25,
+                            child: Image.asset('assets/icons/like_icon.png'),
+                          ),
                           Container(
-                              width: 25,
-                              height: 25,
-                              child: Image.asset(
-                                  'assets/icons/celebrate_icon.png')),
+                            width: 25,
+                            height: 25,
+                            child:
+                                Image.asset('assets/icons/celebrate_icon.png'),
+                          ),
                           if (index == 0 || index == 4 || index == 6)
                             Container(
-                                width: 25,
-                                height: 25,
-                                child:
-                                    Image.asset('assets/icons/love_icon.png')),
+                              width: 25,
+                              height: 25,
+                              child: Image.asset('assets/icons/love_icon.png'),
+                            ),
                           SizedBox(
                             width: 5,
                           ),

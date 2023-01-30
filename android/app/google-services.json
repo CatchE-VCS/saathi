@@ -1,0 +1,90 @@
+{
+  "project_info": {
+    "project_number": "544423238849",
+    "project_id": "saathi-85757",
+    "storage_bucket": "saathi-85757.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:544423238849:android:fbaa85a42d04302aa80840",
+        "android_client_info": {
+          "package_name": "com.example.saathi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "544423238849-qdf4q970oth3foq9641d7nksem8krl8d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAT-DdQuj81t_fPaz-e2fi_ONBjPM9nMj4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "544423238849-qdf4q970oth3foq9641d7nksem8krl8d.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "544423238849-rpfdr9lh3jj983gejkuk0ribrctftcqd.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.saathi"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:544423238849:android:9fd2dee8213196e3a80840",
+        "android_client_info": {
+          "package_name": "com.example.saathi_"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "544423238849-gticdu4t9enbq26t607ub7f73v9bmfds.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.saathi_",
+            "certificate_hash": "c7a4579c1d8e8ecbfbb7929d2d0eb9ae96dd5cbd"
+          }
+        },
+        {
+          "client_id": "544423238849-qdf4q970oth3foq9641d7nksem8krl8d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAT-DdQuj81t_fPaz-e2fi_ONBjPM9nMj4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "544423238849-qdf4q970oth3foq9641d7nksem8krl8d.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "544423238849-rpfdr9lh3jj983gejkuk0ribrctftcqd.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.saathi"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

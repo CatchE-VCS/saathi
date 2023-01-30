@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:saathi/utils/const.dart';
 
 class AuthController {
@@ -61,7 +62,7 @@ class AuthController {
       if (user != null) {
         if (userCredential.additionalUserInfo!.isNewUser) {
           //store user details in firestore
-          FirebaseFirestore.instance.collection('users').doc(user.uid).set({
+          firebaseFirestore.collection('users').doc(user.uid).set({
             'fname': user.displayName,
             'username': user.email,
             'uid': user.uid,
@@ -98,7 +99,7 @@ class AuthController {
       await userCredential.user!.sendEmailVerification();
       if (userCredential.additionalUserInfo!.isNewUser) {
         //store user details in firestore
-        FirebaseFirestore.instance
+        firebaseFirestore
             .collection('users')
             .doc(userCredential.user!.uid)
             .set({
