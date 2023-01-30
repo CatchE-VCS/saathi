@@ -104,94 +104,7 @@ class _BodyState extends State<Body> {
                       ),
                     ),
                     const Spacer(flex: 1),
-                    SizedBox(
-                      width: double.infinity,
-                      height: getProportionateScreenHeight(55),
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          elevation: 3,
-                          backgroundColor: kPrimaryColor,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(25.0),
-                            side: const BorderSide(color: kPrimaryColor),
-                          ),
-                        ),
-                        onPressed: () {
-                          // Navigator.of(context).push(
-                          //   MaterialPageRoute(
-                          //     builder: (BuildContext context) => const SignUp(),
-                          //   ),
-                          // );
-                        },
-                        child: Text(
-                          "Join now",
-                          style: TextStyle(
-                            fontSize: getProportionateScreenWidth(18),
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    SizedBox(
-                      width: double.infinity,
-                      height: getProportionateScreenHeight(55),
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          elevation: 3,
-                          backgroundColor: Colors.white,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(25.0),
-                            // side: const BorderSide(color: Colors.black45),
-                          ),
-                        ),
-                        onPressed: () {},
-                        child: Row(
-                          // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            const SizedBox(
-                              width: 60,
-                            ),
-                            SvgPicture.asset(
-                              "assets/icons-google.svg",
-                              width: 20,
-                              height: 20,
-                            ),
-                            const SizedBox(
-                              width: 10,
-                            ),
-                            Text(
-                              "Join with Google",
-                              style: TextStyle(
-                                fontSize: getProportionateScreenWidth(18),
-                                color: Colors.black,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 25,
-                    ),
-                    GestureDetector(
-                        onTap: () {
-                          // Navigator.of(context).push(MaterialPageRoute(
-                          //   builder: (BuildContext context) => const SignIn(),
-                          // ));
-                        },
-                        child: const Text(
-                          "Sign In",
-                          style: TextStyle(
-                              color: kPrimaryColor,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold),
-                        )),
-                    const Spacer(),
-                  ],
-                ),
+                  ]),
               ),
             ),
           ],
@@ -205,7 +118,7 @@ class _BodyState extends State<Body> {
       duration: Duration(milliseconds: 100),
       margin: EdgeInsets.only(right: 5),
       height: 10,
-      width: currentPage == index ? 10 : 10,
+      width: currentPage == index ? 30 : 20,
       decoration: BoxDecoration(
         color: currentPage == index ? Colors.grey[800] : Colors.white,
 
