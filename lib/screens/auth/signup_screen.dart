@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 // import 'package:google_fonts/google_fonts.dart';
+import 'package:saathi/screens/auth/login_screen.dart';
+import 'package:saathi/screens/auth/verification_screen.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({Key? key}) : super(key: key);
@@ -11,6 +13,7 @@ class SignUpScreen extends StatefulWidget {
 class _SignUpScreenState extends State<SignUpScreen> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  TextEditingController nameController = TextEditingController();
   bool? value = false;
   @override
   Widget build(BuildContext context) {
@@ -25,7 +28,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             ),
             Center(
               child: Text(
-                "Welcome Back!",
+                "Become a member!",
                 style: TextStyle(
                   fontSize: 25,
                   color: Colors.black,
@@ -35,6 +38,30 @@ class _SignUpScreenState extends State<SignUpScreen> {
             ),
             SizedBox(
               height: 20,
+            ),
+            TextFormField(
+              controller: nameController,
+              decoration: InputDecoration(
+                labelText: "Name",
+                // labelStyle:
+                //     TextStyle(fontFamily: GoogleFonts.poppins().fontFamily),
+                focusedBorder: OutlineInputBorder(
+                  borderSide:
+                      const BorderSide(color: Colors.indigo, width: 2.0),
+                  borderRadius: new BorderRadius.circular(15.0),
+                ),
+                border: new OutlineInputBorder(
+                  borderRadius: new BorderRadius.circular(15.0),
+                ),
+                suffixIcon: Icon(
+                  Icons.account_circle,
+                  size: 20,
+                  color: Colors.indigo,
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 15,
             ),
             TextFormField(
               controller: emailController,
@@ -59,18 +86,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
             ),
             SizedBox(
               height: 15,
-            ),
-            Container(
-                alignment: Alignment.centerRight,
-                margin: EdgeInsets.only(left: 120),
-                child: Text(
-                  "Forgot Password ?",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                  ),
-                )),
-            SizedBox(
-              height: 3,
             ),
             TextFormField(
               controller: passwordController,
@@ -97,22 +112,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
             SizedBox(
               height: 10,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Checkbox(
-                  value: this.value,
-                  onChanged: _toggleCheckBox,
-                  activeColor: Colors.indigo,
-                ),
-                Text(
-                  "Remember me",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                  ),
-                )
-              ],
-            ),
             Row(children: <Widget>[
               Expanded(
                   child: Divider(
@@ -128,7 +127,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               )),
             ]),
             SizedBox(
-              height: 10,
+              height: 25,
             ),
             ElevatedButton(
                 onPressed: () {},
@@ -146,7 +145,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                 )),
             SizedBox(
-              height: 25,
+              height: 60,
             ),
             Container(
               height: 50,
@@ -158,12 +157,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
-                    "Log in",
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16,
-                        color: Colors.white),
+                  GestureDetector(
+                    child: Text(
+                      "Create an account",
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                          color: Colors.white),
+                    ),
+                    onTap: () => Navigator.pushReplacement(context,
+                        MaterialPageRoute(builder: (context) => Verify())),
                   ),
                   Icon(
                     Icons.arrow_forward_rounded,
@@ -173,19 +176,23 @@ class _SignUpScreenState extends State<SignUpScreen> {
               ),
             ),
             SizedBox(
-              height: 5,
+              height: 10,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "Don't have an account ? ",
+                  "Already have an account ? ",
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
-                Text(
-                  "Sign up now",
-                  style: TextStyle(
-                      color: Colors.indigo, fontWeight: FontWeight.bold),
+                GestureDetector(
+                  onTap: () => Navigator.pushReplacement(context,
+                      MaterialPageRoute(builder: (context) => LoginScreen())),
+                  child: Text(
+                    "Sign in",
+                    style: TextStyle(
+                        color: Colors.indigo, fontWeight: FontWeight.bold),
+                  ),
                 )
               ],
             )
