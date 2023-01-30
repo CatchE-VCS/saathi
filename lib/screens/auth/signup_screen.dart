@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:saathi/controllers/auth_controller.dart';
 // import 'package:google_fonts/google_fonts.dart';
 import 'package:saathi/screens/auth/login_screen.dart';
 import 'package:saathi/screens/auth/verification_screen.dart';
@@ -17,7 +18,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
   TextEditingController passwordController = TextEditingController();
   TextEditingController nameController = TextEditingController();
   bool? value = false;
-   bool activeConnection = false;
+  bool _isLoading = false;
+  bool activeConnection = false;
   String T = "";
   Future checkUserConnection() async {
     try {
@@ -35,6 +37,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
       });
     }
   }
+
+  @override
+  void initState() {
+    checkUserConnection();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -167,32 +176,31 @@ class _SignUpScreenState extends State<SignUpScreen> {
             SizedBox(
               height: 60,
             ),
-            Container(
-              height: 50,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                color: Colors.indigo,
-                borderRadius: BorderRadius.circular(15),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  GestureDetector(
-                    child: Text(
+            GestureDetector(
+              onTap: () => signUpUser(),
+              child: Container(
+                height: 50,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: Colors.indigo,
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
                       "Create an account",
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 16,
                           color: Colors.white),
                     ),
-                    onTap: () => Navigator.pushReplacement(context,
-                        MaterialPageRoute(builder: (context) => Verify())),
-                  ),
-                  Icon(
-                    Icons.arrow_forward_rounded,
-                    color: Colors.white,
-                  )
-                ],
+                    Icon(
+                      Icons.arrow_forward_rounded,
+                      color: Colors.white,
+                    )
+                  ],
+                ),
               ),
             ),
             SizedBox(
@@ -220,6 +228,31 @@ class _SignUpScreenState extends State<SignUpScreen> {
         ),
       ),
     ));
+  }
+
+  signUpUser() async {
+    setState(() {
+      _isLoading = true;
+    });
+    String res = await AuthController().signUpUser(
+      emailController.text.trim(),
+      passwordController.text.trim(),
+      nameController.text,
+    );
+
+    if (res != 'success') {
+      setState(() {
+        _isLoading = false;
+      });
+      if (!mounted) return;
+      return showSnackBarr(res, context);
+    } else {
+      if (!mounted) return;
+      showSnackBarr(
+          'Congratulations account has been created for you', context);
+      return Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (context) => Verify()));
+    }
   }
 
   void _toggleCheckBox(bool? check) {
