@@ -1,10 +1,10 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:saathi/controllers/auth_controller.dart';
 import 'package:saathi/screens/auth/password_reset.dart';
 import 'package:saathi/screens/auth/signup_screen.dart';
-import 'package:saathi/screens/home/home_screen.dart';
 // import 'package:google_fonts/google_fonts.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -29,9 +29,10 @@ class _LoginScreenState extends State<LoginScreen> {
         child: Padding(
           padding: EdgeInsets.all(25),
           child: Column(children: [
-            SizedBox(
-              height: 190,
-            ),
+            Container(
+                width: double.infinity,
+                height: 200,
+                child: Lottie.asset('assets/login.json')),
             Center(
               child: Text(
                 "Welcome Back!",
@@ -153,12 +154,21 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: Container(
                   height: 40,
                   width: 210,
-                  child: Center(
-                    child: Text(
-                      "Continue with Google",
-                      style: TextStyle(color: Colors.black),
-                    ),
-                  ),
+                  child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset(
+                          'assets/google.png',
+                          width: 18,
+                        ),
+                        SizedBox(
+                          width: 5,
+                        ),
+                        Text(
+                          "Continue with Google",
+                          style: TextStyle(color: Colors.black),
+                        ),
+                      ]),
                 )),
             SizedBox(
               height: 65,
