@@ -1,13 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:saathi/utils/colors.dart';
-// import 'package:saathi/controllers/auth_controller.dart';
-
-// import 'package:saathi/screens/sign_in/sign_in.dart';
-// import 'package:saathi/screens/sign_up/sign_up1.dart';
 import 'package:saathi/utils/size_config.dart';
 
-// This is the best practice
 import 'splash_content.dart';
 
 class Body extends StatefulWidget {
@@ -18,8 +11,6 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
-  bool _isLoading = false;
-  // final AuthController _authController = AuthController();
   int currentPage = 0;
   List<Map<String, String>> splashData = [
     {
@@ -93,18 +84,17 @@ class _BodyState extends State<Body> {
               child: Padding(
                 padding: EdgeInsets.symmetric(
                     horizontal: getProportionateScreenWidth(20)),
-                child: Column(
-                  children: <Widget>[
-                    const Spacer(),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: List.generate(
-                        splashData.length,
-                        (index) => buildDot(index: index),
-                      ),
+                child: Column(children: <Widget>[
+                  const Spacer(),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: List.generate(
+                      splashData.length,
+                      (index) => buildDot(index: index),
                     ),
-                    const Spacer(flex: 1),
-                  ]),
+                  ),
+                  const Spacer(flex: 1),
+                ]),
               ),
             ),
           ],
