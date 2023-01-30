@@ -55,26 +55,28 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: ResponsiveBuilder(
-          builder: (BuildContext context, SizingInformation sizingInformation) {
-        return Container(
-          color: Colors.black12,
-          child: Column(
-            children: [
-              _showAppNavBar
-                  ? CustomAppBar(
-                      sizingInformation: sizingInformation,
-                    )
-                  : Container(
-                      height: 0.0,
-                      width: 0.0,
-                    ),
-              _listPostWidget(sizingInformation),
-            ],
-          ),
-        );
-      }),
+    return SafeArea(
+      child: Scaffold(
+        body: ResponsiveBuilder(
+            builder: (BuildContext context, SizingInformation sizingInformation) {
+          return Container(
+            color: Colors.black12,
+            child: Column(
+              children: [
+                _showAppNavBar
+                    ? CustomAppBar(
+                        sizingInformation: sizingInformation,
+                      )
+                    : Container(
+                        height: 0.0,
+                        width: 0.0,
+                      ),
+                _listPostWidget(sizingInformation),
+              ],
+            ),
+          );
+        }),
+      ),
     );
   }
 
