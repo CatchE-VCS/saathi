@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:saathi/screens/home/home_screen.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
+import 'package:saathi/screens/home/home_screen.dart';
 
 class PostWidget extends StatelessWidget {
   final textController  = TextEditingController();
@@ -18,7 +20,10 @@ class PostWidget extends StatelessWidget {
             borderRadius: BorderRadius.circular(20),
             child: AppBar(
               backgroundColor: const Color(0xffE5D0ED),
-              leading:  IconButton(icon: const Icon(Icons.cancel_outlined), onPressed: () => _pc.close(),),
+              leading:  IconButton(icon: const Icon(Icons.cancel_outlined), onPressed: () {
+                _pc.close();
+                Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen()));
+              },),
               actions: const [
                 IconButton(onPressed: null, icon: Icon(Icons.access_time_rounded)),
                 Padding(
