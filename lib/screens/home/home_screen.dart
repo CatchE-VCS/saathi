@@ -24,6 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
   late ScrollController _scrollController;
   bool _isScrollDown = false;
   int like = 0;
+  int _selectedindex = 0;
 
   @override
   void initState() {
@@ -89,28 +90,31 @@ class _HomeScreenState extends State<HomeScreen> {
           }) : const Scaffold(),
           bottomNavigationBar: BottomNavigationBar(
               type: BottomNavigationBarType.fixed,
-              selectedLabelStyle: TextStyle(),
-              currentIndex: 0,
+              selectedLabelStyle: TextStyle(fontSize: 11),
+              showSelectedLabels: true,
+              showUnselectedLabels: false,
+              selectedIconTheme: IconThemeData(color: Colors.black87,),
+              currentIndex: _selectedindex,
               onTap: (index) {
+                setState(() {
+                  _selectedindex = index;
+                });
                 if(index == 2) {
                   _pc.open();
                 }
-                setState(() {
-                currentIndex = index;
-              });
+
               },
-              iconSize: 29,
+              iconSize: 27,
               selectedItemColor: Colors.black87,
               backgroundColor: Colors.white,
-              selectedIconTheme: const IconThemeData(color: Color(0xffd1e7da)),
+
               unselectedItemColor: Colors.grey,
               items: const [
-                BottomNavigationBarItem(icon: Icon(Icons.home_filled), label: "Home", ),
-                BottomNavigationBarItem(icon: Icon(Icons.add_box_outlined), label: "",),
-                BottomNavigationBarItem(icon: Icon(Icons.add_box_outlined), label: "", ),
-                BottomNavigationBarItem(icon: Icon(Icons.add_box_outlined), label: "",),
-                BottomNavigationBarItem(icon: Icon(Icons.circle_outlined), label: "", ),
-
+                BottomNavigationBarItem(icon: Icon(Icons.home_filled), label: "Home", activeIcon: Icon(Icons.home_filled,color: Colors.black87,) ),
+                BottomNavigationBarItem(icon: Icon(Icons.chat_bubble), label: "Hope Chamber", activeIcon: Icon(Icons.chat_bubble,color: Colors.black87,)),
+                BottomNavigationBarItem(icon: Icon(Icons.add_box_outlined), label: "", activeIcon:  Icon(Icons.add_box_outlined, color: Colors.black87,),),
+                BottomNavigationBarItem(icon: Icon(Icons.holiday_village), label: "",),
+                BottomNavigationBarItem(icon: Icon(Icons.circle_outlined), label: "Profile", activeIcon: Icon(Icons.circle_outlined, color: Colors.black87,)),
               ],
 
             ),
