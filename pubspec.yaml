@@ -49,6 +49,7 @@ dependencies:
   cloud_firestore: ^4.3.1
   google_sign_in: ^5.4.4
   dialog_flowtter: ^0.3.3
+  sliding_up_panel: ^2.0.0+1
 
 dev_dependencies:
   flutter_test:
