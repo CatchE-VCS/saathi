@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:responsive_builder/responsive_builder.dart';
+import 'package:saathi/screens/post_screen.dart';
 import 'package:saathi/utils/colors.dart';
 import 'package:saathi/utils/data.dart';
+import 'package:saathi/utils/size_config.dart';
 import 'package:saathi/widgets/custom_app_bar.dart';
 import 'package:saathi/widgets/custom_buttons.dart';
+import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -14,6 +17,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final _pc = PanelController();
   int currentIndex = 0;
   final _post = Data.postList;
   bool _showAppNavBar = true;
@@ -56,50 +60,61 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        extendBody: true,
-        body: (currentIndex == 0) ?ResponsiveBuilder(
-            builder: (BuildContext context, SizingInformation sizingInformation) {
-          return Container(
-            color: Colors.black12,
-            child: Column(
-              children: [
-                _showAppNavBar
-                    ? CustomAppBar(
-                        sizingInformation: sizingInformation,
-                      )
-                    : Container(
-                        height: 0.0,
-                        width: 0.0,
-                      ),
-                _listPostWidget(sizingInformation),
+    return SlidingUpPanel(
+      minHeight: 0,
+      maxHeight: 780,
+      controller: _pc,
+      panel: PostWidget(_pc),
+      body : SafeArea(
+        child: Scaffold(
+          extendBody: true,
+          body: (currentIndex == 0) ?ResponsiveBuilder(
+              builder: (BuildContext context, SizingInformation sizingInformation) {
+            return Container(
+              color: Colors.black12,
+              child: Column(
+                children: [
+                  _showAppNavBar
+                      ? CustomAppBar(
+                          sizingInformation: sizingInformation,
+                        )
+                      : Container(
+                          height: 0.0,
+                          width: 0.0,
+                        ),
+                  _listPostWidget(sizingInformation),
+                ],
+              ),
+            );
+          }) : const Scaffold(),
+          bottomNavigationBar: BottomNavigationBar(
+              type: BottomNavigationBarType.fixed,
+              selectedLabelStyle: TextStyle(),
+              currentIndex: 0,
+              onTap: (index) {
+                if(index == 2) {
+                  _pc.open();
+                }
+                setState(() {
+                currentIndex = index;
+              });
+              },
+              iconSize: 29,
+              selectedItemColor: Colors.black87,
+              backgroundColor: Colors.white,
+              selectedIconTheme: const IconThemeData(color: Color(0xffd1e7da)),
+              unselectedItemColor: Colors.grey,
+              items: const [
+                BottomNavigationBarItem(icon: Icon(Icons.home_filled), label: "Home", ),
+                BottomNavigationBarItem(icon: Icon(Icons.add_box_outlined), label: "",),
+                BottomNavigationBarItem(icon: Icon(Icons.add_box_outlined), label: "", ),
+                BottomNavigationBarItem(icon: Icon(Icons.add_box_outlined), label: "",),
+                BottomNavigationBarItem(icon: Icon(Icons.circle_outlined), label: "", ),
+
               ],
+
             ),
-          );
-        }) : const Scaffold(),
-        bottomNavigationBar: BottomNavigationBar(
-            type: BottomNavigationBarType.fixed,
-            selectedLabelStyle: TextStyle(),
-            currentIndex: 0,
-            onTap: (index) => setState(() {
-              currentIndex = index;
-            }),
-            iconSize: 29,
-            selectedItemColor: Colors.black87,
-            backgroundColor: Colors.white,
-            selectedIconTheme: const IconThemeData(color: Color(0xffd1e7da)),
-            unselectedItemColor: Colors.grey,
-            items: const [
-              BottomNavigationBarItem(icon: Icon(Icons.home_filled), label: "Home", ),
-              BottomNavigationBarItem(icon: Icon(Icons.add_box_outlined), label: "",),
-              BottomNavigationBarItem(icon: Icon(Icons.add_box_outlined), label: "", ),
-              BottomNavigationBarItem(icon: Icon(Icons.add_box_outlined), label: "",),
-              BottomNavigationBarItem(icon: Icon(Icons.circle_outlined), label: "", ),
-
-            ],
-
-          ),
+        ),
       ),
     );
   }
