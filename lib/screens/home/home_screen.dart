@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:responsive_builder/responsive_builder.dart';
+import 'package:saathi/controllers/botController.dart';
+import 'package:saathi/hope_screen.dart';
 import 'package:saathi/screens/post_screen.dart';
 import 'package:saathi/utils/colors.dart';
 import 'package:saathi/utils/data.dart';
-import 'package:saathi/utils/size_config.dart';
 import 'package:saathi/widgets/custom_app_bar.dart';
 import 'package:saathi/widgets/custom_buttons.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
@@ -66,58 +67,97 @@ class _HomeScreenState extends State<HomeScreen> {
       maxHeight: 780,
       controller: _pc,
       panel: PostWidget(_pc),
-      body : SafeArea(
+      body: SafeArea(
         child: Scaffold(
           extendBody: true,
-          body: (currentIndex == 0) ?ResponsiveBuilder(
-              builder: (BuildContext context, SizingInformation sizingInformation) {
-            return Container(
-              color: Colors.black12,
-              child: Column(
-                children: [
-                  _showAppNavBar
-                      ? CustomAppBar(
-                          sizingInformation: sizingInformation,
-                        )
-                      : Container(
-                          height: 0.0,
-                          width: 0.0,
-                        ),
-                  _listPostWidget(sizingInformation),
-                ],
-              ),
-            );
-          }) : const Scaffold(),
+          body: (currentIndex == 0)
+              ? ResponsiveBuilder(builder:
+                  (BuildContext context, SizingInformation sizingInformation) {
+                  return Container(
+                    color: Colors.black12,
+                    child: Column(
+                      children: [
+                        _showAppNavBar
+                            ? CustomAppBar(
+                                sizingInformation: sizingInformation,
+                              )
+                            : Container(
+                                height: 0.0,
+                                width: 0.0,
+                              ),
+                        _listPostWidget(sizingInformation),
+                      ],
+                    ),
+                  );
+                })
+              : const Scaffold(),
+          floatingActionButton: FloatingActionButton(
+            onPressed: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => Home()));
+            },
+          ),
           bottomNavigationBar: BottomNavigationBar(
-              type: BottomNavigationBarType.fixed,
-              selectedLabelStyle: TextStyle(fontSize: 11),
-              showSelectedLabels: true,
-              showUnselectedLabels: false,
-              selectedIconTheme: IconThemeData(color: Colors.black87,),
-              currentIndex: _selectedindex,
-              onTap: (index) {
-                setState(() {
-                  _selectedindex = index;
-                });
-                if(index == 2) {
-                  _pc.open();
-                }
-
-              },
-              iconSize: 27,
-              selectedItemColor: Colors.black87,
-              backgroundColor: Colors.white,
-
-              unselectedItemColor: Colors.grey,
-              items: const [
-                BottomNavigationBarItem(icon: Icon(Icons.home_filled), label: "Home", activeIcon: Icon(Icons.home_filled,color: Colors.black87,) ),
-                BottomNavigationBarItem(icon: Icon(Icons.chat_bubble), label: "Hope Chamber", activeIcon: Icon(Icons.chat_bubble,color: Colors.black87,)),
-                BottomNavigationBarItem(icon: Icon(Icons.add_box_outlined), label: "", activeIcon:  Icon(Icons.add_box_outlined, color: Colors.black87,),),
-                BottomNavigationBarItem(icon: Icon(Icons.holiday_village), label: "",),
-                BottomNavigationBarItem(icon: Icon(Icons.circle_outlined), label: "Profile", activeIcon: Icon(Icons.circle_outlined, color: Colors.black87,)),
-              ],
-
+            type: BottomNavigationBarType.fixed,
+            selectedLabelStyle: TextStyle(fontSize: 11),
+            showSelectedLabels: true,
+            showUnselectedLabels: false,
+            selectedIconTheme: IconThemeData(
+              color: Colors.black87,
             ),
+            currentIndex: _selectedindex,
+            onTap: (index) {
+              setState(() {
+                _selectedindex = index;
+              });
+              if (index == 1) {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => Quotes()));
+              }
+              if (index == 2) {
+                _pc.open();
+              }
+            },
+            iconSize: 27,
+            selectedItemColor: Colors.black87,
+            backgroundColor: Colors.white,
+            unselectedItemColor: Colors.grey,
+            items: const [
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.home_filled),
+                  label: "Home",
+                  activeIcon: Icon(
+                    Icons.home_filled,
+                    color: Colors.black87,
+                  )),
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.chat_bubble),
+                  label: "Hope Chamber",
+                  activeIcon: Icon(
+                    Icons.chat_bubble,
+                    color: Colors.black87,
+                  )),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.add_box_outlined),
+                label: "",
+                activeIcon: Icon(
+                  Icons.add_box_outlined,
+                  color: Colors.black87,
+                ),
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.holiday_village),
+                label: "",
+              ),
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.circle_outlined),
+                  label: "Profile",
+                  activeIcon: Icon(
+                    Icons.circle_outlined,
+                    color: Colors.black87,
+                  )),
+            ],
+          ),
         ),
       ),
     );
