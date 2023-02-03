@@ -37,7 +37,7 @@ class PostWidget extends StatelessWidget {
             children: [
               TextField(
                 maxLength: 700,
-                maxLines: 30,
+                maxLines: 29,
                 decoration: InputDecoration(
                   hintText: "What do you want to talk about?",
                 ),
