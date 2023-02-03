@@ -29,8 +29,8 @@ class Post {
   }
 
   Future getData() async {
-    http.Response response =
-        await http.get(Uri.parse("http://ec87-103-101-118-4.ngrok.io/posts"));
+    http.Response response = await http.get(
+        Uri.parse("https://malicious-place-production.up.railway.app/posts"));
     if (response.statusCode == 200) {
       String data = response.body;
       print(jsonDecode(data));
