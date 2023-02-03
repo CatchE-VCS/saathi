@@ -59,29 +59,26 @@ class _HomeScreenState extends State<HomeScreen> {
     return SafeArea(
       child: Scaffold(
         extendBody: true,
-        body: (currentIndex == 0)
-            ? ResponsiveBuilder(builder:
-                (BuildContext context, SizingInformation sizingInformation) {
-                return Container(
-                  color: Colors.black12,
-                  child: Column(
-                    children: [
-                      _showAppNavBar
-                          ? CustomAppBar(
-                              sizingInformation: sizingInformation,
-                            )
-                          : Container(
-                              height: 0.0,
-                              width: 0.0,
-                            ),
-                      _listPostWidget(sizingInformation),
-                    ],
-                  ),
-                );
-              })
-            : const Scaffold(),
+        body: (currentIndex == 0) ?ResponsiveBuilder(
+            builder: (BuildContext context, SizingInformation sizingInformation) {
+          return Container(
+            color: Colors.black12,
+            child: Column(
+              children: [
+                _showAppNavBar
+                    ? CustomAppBar(
+                        sizingInformation: sizingInformation,
+                      )
+                    : Container(
+                        height: 0.0,
+                        width: 0.0,
+                      ),
+                _listPostWidget(sizingInformation),
+              ],
+            ),
+          );
+        }) : const Scaffold(),
         bottomNavigationBar: BottomNavigationBar(
-<<<<<<< HEAD
             type: BottomNavigationBarType.fixed,
             selectedLabelStyle: TextStyle(),
             currentIndex: 0,
@@ -103,42 +100,6 @@ class _HomeScreenState extends State<HomeScreen> {
             ],
 
           ),
-=======
-          type: BottomNavigationBarType.fixed,
-          selectedLabelStyle: TextStyle(),
-          currentIndex: 0,
-          onTap: (index) => setState(() {
-            currentIndex = index;
-          }),
-          iconSize: 29,
-          selectedItemColor: Colors.black87,
-          backgroundColor: Colors.white,
-          selectedIconTheme: const IconThemeData(color: Color(0xffd1e7da)),
-          unselectedItemColor: Colors.grey,
-          items: const [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home_filled),
-              label: "Home",
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.add_box_outlined),
-              label: "",
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.add_box_outlined),
-              label: "",
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.add_box_outlined),
-              label: "",
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.circle_outlined),
-              label: "",
-            ),
-          ],
-        ),
->>>>>>> 7becd6520633448a72a3a33632efed2ffb3483a4
       ),
     );
   }
