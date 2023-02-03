@@ -54,7 +54,7 @@ class CustomAppBar extends StatelessWidget {
               height: 30,
               width: 30,
               child: InkWell(
-                  onTap: () async => await Post().login(),
+                  onTap: () async => await Post().getData(),
                   child: Icon(FontAwesomeIcons.facebookMessenger))),
         ],
       ),
