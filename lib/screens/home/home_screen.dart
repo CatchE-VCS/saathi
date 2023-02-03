@@ -4,6 +4,7 @@ import 'package:responsive_builder/responsive_builder.dart';
 import 'package:saathi/controllers/botController.dart';
 import 'package:saathi/hope_screen.dart';
 import 'package:saathi/screens/post_screen.dart';
+import 'package:saathi/screens/profile_screen.dart';
 import 'package:saathi/utils/colors.dart';
 import 'package:saathi/utils/data.dart';
 import 'package:saathi/widgets/custom_app_bar.dart';
@@ -113,6 +114,10 @@ class _HomeScreenState extends State<HomeScreen> {
               if (index == 1) {
                 Navigator.push(
                     context, MaterialPageRoute(builder: (context) => Quotes()));
+              }
+              if (index == 4) {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => ProfilePage()));
               }
               if (index == 2) {
                 _pc.open();
