@@ -2,17 +2,19 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class QuotesDb {
+  QuotesDb({
+    required this.quote,
+    required this.author,
+  });
   String? quote;
   String? author;
 
-  QuotesDb({required this.quote, required this.author});
-
-  factory QuotesDb.fromMap(Map<String, dynamic> json) => QuotesDb(
+  factory QuotesDb.fromJson(Map<String, dynamic> json) => QuotesDb(
         quote: json["quoteText"],
         author: json["quoteAuthor"],
       );
 
-  Map<String, dynamic> toMap() => {
+  Map<String, dynamic> toJson() => {
         "quoteText": quote,
         "quoteAuthor": author,
       };
@@ -24,7 +26,7 @@ class QuoteController {
         .get(Uri.parse("https://overjoyed-sound-production.up.railway.app/"));
     if (response.statusCode == 200) {
       String data = response.body;
-      return QuotesDb.fromMap(jsonDecode(response.body));
+      return QuotesDb.fromJson(jsonDecode(response.body));
     } else {
       return QuotesDb(quote: null, author: null);
     }
