@@ -34,10 +34,9 @@ class Post {
         Uri.parse("https://malicious-place-production.up.railway.app/posts"));
     if (response.statusCode == 200) {
       String data = response.body;
-      print(jsonDecode(data));
+
     } else {
-      print(response.statusCode);
-      print(response.body);
+      
     }
   }
 }
