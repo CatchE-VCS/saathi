@@ -57,8 +57,8 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: ResponsiveBuilder(
-            builder: (BuildContext context, SizingInformation sizingInformation) {
+        body: ResponsiveBuilder(builder:
+            (BuildContext context, SizingInformation sizingInformation) {
           return Container(
             color: Colors.black12,
             child: Column(
