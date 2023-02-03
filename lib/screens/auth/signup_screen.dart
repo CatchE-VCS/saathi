@@ -143,6 +143,50 @@ class _SignUpScreenState extends State<SignUpScreen> {
             SizedBox(
               height: 10,
             ),
+            Row(children: <Widget>[
+              Expanded(
+                  child: Divider(
+                color: Colors.grey[400],
+              )),
+              Text(
+                "or",
+                style: TextStyle(color: Colors.grey),
+              ),
+              Expanded(
+                  child: Divider(
+                color: Colors.grey[400],
+              )),
+            ]),
+            SizedBox(
+              height: 25,
+            ),
+            ElevatedButton(
+                onPressed: () {},
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(Colors.white),
+                ),
+                child: Container(
+                  height: 40,
+                  width: 210,
+                  child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset(
+                          'assets/google.png',
+                          width: 18,
+                        ),
+                        SizedBox(
+                          width: 5,
+                        ),
+                        Text(
+                          "Continue with Google",
+                          style: TextStyle(color: Colors.black),
+                        ),
+                      ]),
+                )),
+            SizedBox(
+              height: 60,
+            ),
             GestureDetector(
               onTap: () => signUpUser(),
               child: Container(
@@ -170,50 +214,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
               ),
             ),
-            SizedBox(
-              height: 25,
-            ),
-            Row(children: <Widget>[
-              Expanded(
-                  child: Divider(
-                color: Colors.grey[400],
-              )),
-              Text(
-                "or",
-                style: TextStyle(color: Colors.grey),
-              ),
-              Expanded(
-                  child: Divider(
-                color: Colors.grey[400],
-              )),
-            ]),
-            SizedBox(
-              height: 45,
-            ),
-            ElevatedButton(
-                onPressed: () {},
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.white),
-                ),
-                child: Container(
-                  height: 40,
-                  width: 210,
-                  child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset(
-                          'assets/google.png',
-                          width: 18,
-                        ),
-                        SizedBox(
-                          width: 5,
-                        ),
-                        Text(
-                          "Continue with Google",
-                          style: TextStyle(color: Colors.black),
-                        ),
-                      ]),
-                )),
             SizedBox(
               height: 10,
             ),
