@@ -20,7 +20,7 @@ class _LoginScreenState extends State<LoginScreen> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   bool? value = false;
-
+  bool _isHidden = true;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -88,8 +88,15 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             TextFormField(
               controller: passwordController,
+              obscureText: _isHidden,
               decoration: InputDecoration(
                 labelText: "Password",
+                suffix: InkWell(
+                  onTap: _togglePasswordView,
+                  child: Icon(
+                    _isHidden ? Icons.visibility_off : Icons.visibility,
+                  ),
+                ),
                 // labelStyle: TextStyle(
                 //     fontFamily: GoogleFonts.poppins().fontFamily
                 // ),
@@ -100,11 +107,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 border: new OutlineInputBorder(
                   borderRadius: new BorderRadius.circular(15.0),
-                ),
-                suffixIcon: Icon(
-                  Icons.lock_outlined,
-                  size: 20,
-                  color: Colors.indigo,
                 ),
               ),
             ),
@@ -127,51 +129,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 )
               ],
             ),
-            Row(children: <Widget>[
-              Expanded(
-                  child: Divider(
-                color: Colors.grey[400],
-              )),
-              Text(
-                "or",
-                style: TextStyle(color: Colors.grey),
-              ),
-              Expanded(
-                  child: Divider(
-                color: Colors.grey[400],
-              )),
-            ]),
             SizedBox(
-              height: 25,
-            ),
-            ElevatedButton(
-                onPressed: () async {
-                  await signInWithGoogle();
-                },
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.white),
-                ),
-                child: Container(
-                  height: 40,
-                  width: 210,
-                  child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset(
-                          'assets/google.png',
-                          width: 18,
-                        ),
-                        SizedBox(
-                          width: 5,
-                        ),
-                        Text(
-                          "Continue with Google",
-                          style: TextStyle(color: Colors.black),
-                        ),
-                      ]),
-                )),
-            SizedBox(
-              height: 65,
+              height: 10,
             ),
             GestureDetector(
               onTap: () async => await loginUsers(),
@@ -200,6 +159,52 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
             ),
+            SizedBox(
+              height: 25,
+            ),
+            Row(children: <Widget>[
+              Expanded(
+                  child: Divider(
+                color: Colors.grey[400],
+              )),
+              Text(
+                "or",
+                style: TextStyle(color: Colors.grey),
+              ),
+              Expanded(
+                  child: Divider(
+                color: Colors.grey[400],
+              )),
+            ]),
+            SizedBox(
+              height: 45,
+            ),
+            ElevatedButton(
+                onPressed: () async {
+                  await signInWithGoogle();
+                },
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(Colors.white),
+                ),
+                child: Container(
+                  height: 40,
+                  width: 210,
+                  child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset(
+                          'assets/google.png',
+                          width: 18,
+                        ),
+                        SizedBox(
+                          width: 5,
+                        ),
+                        Text(
+                          "Continue with Google",
+                          style: TextStyle(color: Colors.black),
+                        ),
+                      ]),
+                )),
             SizedBox(
               height: 10,
             ),
@@ -288,6 +293,16 @@ class _LoginScreenState extends State<LoginScreen> {
       showSnackBarr(
           'Congratulations you have been successfully signed in..', context);
       return Navigator.of(context).pushReplacementNamed('/home');
+    }
+  }
+
+  void _togglePasswordView() {
+    if (passwordController != null)
+      setState(() {
+        _isHidden = !_isHidden;
+      });
+    else {
+      _isHidden = false;
     }
   }
 }
