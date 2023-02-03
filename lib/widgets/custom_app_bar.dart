@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:responsive_builder/responsive_builder.dart';
+import 'package:saathi/controllers/postController.dart';
 
 class CustomAppBar extends StatelessWidget {
   final SizingInformation sizingInformation;
 
-  const CustomAppBar({super.key, required this.sizingInformation}) ;
+  const CustomAppBar({super.key, required this.sizingInformation});
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +53,9 @@ class CustomAppBar extends StatelessWidget {
           Container(
               height: 30,
               width: 30,
-              child: Icon(FontAwesomeIcons.facebookMessenger)),
+              child: InkWell(
+                  onTap: () async => await Post().login(),
+                  child: Icon(FontAwesomeIcons.facebookMessenger))),
         ],
       ),
     );
