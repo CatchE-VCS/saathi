@@ -92,11 +92,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 })
               : const Scaffold(),
           floatingActionButton: FloatingActionButton(
-            onPressed: () {
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => Home()));
-            },
-          ),
+              onPressed: () {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => Home()));
+              },
+              child: Icon(Icons.chat)),
           bottomNavigationBar: BottomNavigationBar(
             type: BottomNavigationBarType.fixed,
             selectedLabelStyle: TextStyle(fontSize: 11),

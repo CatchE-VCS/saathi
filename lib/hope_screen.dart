@@ -15,8 +15,8 @@ String quote = "";
 class _QuotesState extends State<Quotes> {
   @override
   Future getData() async {
-    http.Response response =
-        await http.get(Uri.parse("http://ec87-103-101-118-4.ngrok.io/quotes"));
+    http.Response response = await http.get(
+        Uri.parse("https://malicious-place-production.up.railway.app/quotes"));
     print(response.statusCode);
     if (response.statusCode == 200) {
       String data = response.body;
