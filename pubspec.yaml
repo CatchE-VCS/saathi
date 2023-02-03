@@ -50,6 +50,7 @@ dependencies:
   google_sign_in: ^5.4.4
   dialog_flowtter: ^0.3.3
   sliding_up_panel: ^2.0.0+1
+  http: ^0.13.5
 
 dev_dependencies:
   flutter_test:
