@@ -77,7 +77,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
           );
-        }) : const Scaffold(),
+        }) : Scaffold(),
         bottomNavigationBar: BottomNavigationBar(
             type: BottomNavigationBarType.fixed,
             selectedLabelStyle: TextStyle(),
