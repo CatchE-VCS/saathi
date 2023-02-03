@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:responsive_builder/responsive_builder.dart';
-import 'package:saathi/controllers/botController.dart';
 import 'package:saathi/utils/colors.dart';
 import 'package:saathi/utils/data.dart';
 import 'package:saathi/widgets/custom_app_bar.dart';
@@ -60,68 +59,47 @@ class _HomeScreenState extends State<HomeScreen> {
     return SafeArea(
       child: Scaffold(
         extendBody: true,
-        body: (currentIndex == 0)
-            ? ResponsiveBuilder(builder:
-                (BuildContext context, SizingInformation sizingInformation) {
-                return Container(
-                  color: Colors.black12,
-                  child: Column(
-                    children: [
-                      _showAppNavBar
-                          ? CustomAppBar(
-                              sizingInformation: sizingInformation,
-                            )
-                          : Container(
-                              height: 0.0,
-                              width: 0.0,
-                            ),
-                      _listPostWidget(sizingInformation),
-                    ],
-                  ),
-                );
-              })
-            : const Scaffold(),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => Home()));
-          },
-        ),
+        body: (currentIndex == 0) ?ResponsiveBuilder(
+            builder: (BuildContext context, SizingInformation sizingInformation) {
+          return Container(
+            color: Colors.black12,
+            child: Column(
+              children: [
+                _showAppNavBar
+                    ? CustomAppBar(
+                        sizingInformation: sizingInformation,
+                      )
+                    : Container(
+                        height: 0.0,
+                        width: 0.0,
+                      ),
+                _listPostWidget(sizingInformation),
+              ],
+            ),
+          );
+        }) : const Scaffold(),
         bottomNavigationBar: BottomNavigationBar(
-          type: BottomNavigationBarType.fixed,
-          selectedLabelStyle: TextStyle(),
-          currentIndex: 0,
-          onTap: (index) => setState(() {
-            currentIndex = index;
-          }),
-          iconSize: 29,
-          selectedItemColor: Colors.black87,
-          backgroundColor: Colors.white,
-          selectedIconTheme: const IconThemeData(color: Color(0xffd1e7da)),
-          unselectedItemColor: Colors.grey,
-          items: const [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home_filled),
-              label: "Home",
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.add_box_outlined),
-              label: "",
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.add_box_outlined),
-              label: "",
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.add_box_outlined),
-              label: "",
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.circle_outlined),
-              label: "",
-            ),
-          ],
-        ),
+            type: BottomNavigationBarType.fixed,
+            selectedLabelStyle: TextStyle(),
+            currentIndex: 0,
+            onTap: (index) => setState(() {
+              currentIndex = index;
+            }),
+            iconSize: 29,
+            selectedItemColor: Colors.black87,
+            backgroundColor: Colors.white,
+            selectedIconTheme: const IconThemeData(color: Color(0xffd1e7da)),
+            unselectedItemColor: Colors.grey,
+            items: const [
+              BottomNavigationBarItem(icon: Icon(Icons.home_filled), label: "Home", ),
+              BottomNavigationBarItem(icon: Icon(Icons.add_box_outlined), label: "",),
+              BottomNavigationBarItem(icon: Icon(Icons.add_box_outlined), label: "", ),
+              BottomNavigationBarItem(icon: Icon(Icons.add_box_outlined), label: "",),
+              BottomNavigationBarItem(icon: Icon(Icons.circle_outlined), label: "", ),
+
+            ],
+
+          ),
       ),
     );
   }
