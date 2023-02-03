@@ -14,6 +14,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  int currentIndex = 0;
   final _post = Data.postList;
   bool _showAppNavBar = true;
   late ScrollController _scrollController;
@@ -57,7 +58,8 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: ResponsiveBuilder(
+        extendBody: true,
+        body: (currentIndex == 0) ?ResponsiveBuilder(
             builder: (BuildContext context, SizingInformation sizingInformation) {
           return Container(
             color: Colors.black12,
@@ -75,7 +77,30 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
           );
-        }),
+        }) : const Scaffold(),
+        bottomNavigationBar: BottomNavigationBar(
+            type: BottomNavigationBarType.fixed,
+            selectedLabelStyle: TextStyle(),
+            currentIndex: 0,
+            onTap: (index) => setState(() {
+              currentIndex = index;
+            }),
+            iconSize: 29,
+            landscapeLayout: ,
+            selectedItemColor: Colors.black87,
+            backgroundColor: Colors.white,
+            selectedIconTheme: const IconThemeData(color: Color(0xffd1e7da)),
+            unselectedItemColor: Colors.grey,
+            items: const [
+              BottomNavigationBarItem(icon: Icon(Icons.home_filled), label: "Home", ),
+              BottomNavigationBarItem(icon: Icon(Icons.add_box_outlined), label: "",),
+              BottomNavigationBarItem(icon: Icon(Icons.add_box_outlined), label: "", ),
+              BottomNavigationBarItem(icon: Icon(Icons.add_box_outlined), label: "",),
+              BottomNavigationBarItem(icon: Icon(Icons.circle_outlined), label: "", ),
+
+            ],
+
+          ),
       ),
     );
   }
