@@ -86,7 +86,6 @@ class _HomeScreenState extends State<HomeScreen> {
               currentIndex = index;
             }),
             iconSize: 29,
-            landscapeLayout: ,
             selectedItemColor: Colors.black87,
             backgroundColor: Colors.white,
             selectedIconTheme: const IconThemeData(color: Color(0xffd1e7da)),
