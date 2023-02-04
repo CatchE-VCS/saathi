@@ -4,6 +4,7 @@ import 'package:responsive_builder/responsive_builder.dart';
 import 'package:saathi/controllers/botController.dart';
 import 'package:saathi/controllers/postController.dart';
 import 'package:saathi/hope_screen.dart';
+import 'package:saathi/meditation.dart';
 import 'package:saathi/models/user_post_model.dart';
 import 'package:saathi/screens/post_screen.dart';
 import 'package:saathi/screens/profile_screen.dart';
@@ -23,8 +24,14 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final List<Widget> _pages = [
+    HomeScreen(),
+    Quotes(),
+    Scaffold(),
+    HomePage(),
+    MyProfile(),
+  ];
   final _pc = PanelController();
-  int currentIndex = 0;
   List<PostModel> _post = Data.postList;
   bool _showAppNavBar = true;
   late ScrollController _scrollController;
@@ -78,8 +85,9 @@ class _HomeScreenState extends State<HomeScreen> {
       panel: PostWidget(_pc),
       body: SafeArea(
         child: Scaffold(
+
           extendBody: true,
-          body: (currentIndex == 0)
+          body: (_selectedindex == 0)
               ? ResponsiveBuilder(builder:
                   (BuildContext context, SizingInformation sizingInformation) {
                   return Container(
@@ -99,7 +107,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   );
                 })
-              : const Scaffold(),
+              : _pages[_selectedindex],
           floatingActionButton: FloatingActionButton(
               onPressed: () {
                 Navigator.push(
@@ -119,21 +127,21 @@ class _HomeScreenState extends State<HomeScreen> {
               setState(() {
                 _selectedindex = index;
               });
-              if (index == 1) {
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => Quotes()));
-              }
-              if (index == 4) {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => MyProfile()));
-              }
+              // if (index == 1) {
+              //   Navigator.push(
+              //       context, MaterialPageRoute(builder: (context) => Quotes()));
+              // }
+              // if (index == 4) {
+              //   Navigator.push(context,
+              //       MaterialPageRoute(builder: (context) => MyProfile()));
+              // }
               if (index == 2) {
                 _pc.open();
               }
-              if (index == 3) {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => OnBoardingPage()));
-              }
+              // if (index == 3) {
+              //   Navigator.push(context,
+              //       MaterialPageRoute(builder: (context) => OnBoardingPage()));
+              // }
             },
             iconSize: 27,
             selectedItemColor: Colors.black87,
@@ -164,7 +172,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.holiday_village),
-                label: "",
+                label: "Meditation",
               ),
               BottomNavigationBarItem(
                   icon: Icon(Icons.circle_outlined),

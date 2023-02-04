@@ -16,8 +16,13 @@ class CustomAppBar extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
+          Padding(
+            padding: const EdgeInsets.all(9.0),
+            child: Icon(Icons.dehaze_rounded),
+          ),
           Stack(
             children: [
+
               Align(
                 alignment: Alignment.center,
                 child: Container(
