@@ -246,6 +246,11 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Image.network(
                     _post[index].image!,
                     fit: BoxFit.contain,
+                    loadingBuilder: (context, child, loadingProgress) {
+                      if (loadingProgress == null) return child;
+
+                      return const CircularProgressIndicator();
+                    },
                   ),
                 ),
                 SizedBox(

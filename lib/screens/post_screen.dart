@@ -60,8 +60,15 @@ class _PostWidgetState extends State<PostWidget> {
                 Padding(
                   padding: EdgeInsets.all(8.0),
                   child: ElevatedButton(
-                      onPressed: () => Post().addPost(
-                          userName, userProfUrl, textController.text, _image),
+                      onPressed: () async {
+                        await Post().addPost(
+                            userName, userProfUrl, textController.text, _image);
+                            widget._pc.close();
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => HomeScreen()));
+                      },
                       child: Text(
                         "Post",
                         style: TextStyle(color: Colors.white),
@@ -102,14 +109,14 @@ class _PostWidgetState extends State<PostWidget> {
                         Row(
                           children: [
                             IconButton(
-                              onPressed: ()=> selectImage(ImageSource.camera),
+                              onPressed: () => selectImage(ImageSource.camera),
                               icon: Icon(
                                 Icons.camera_alt,
                                 color: Color(0xff710193),
                               ),
                             ),
                             IconButton(
-                              onPressed:()=> selectImage(ImageSource.gallery),
+                              onPressed: () => selectImage(ImageSource.gallery),
                               icon: Icon(Icons.photo_library_outlined),
                               color: Color(0xff710193),
                             ),
