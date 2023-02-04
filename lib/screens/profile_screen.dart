@@ -1,98 +1,135 @@
 import 'package:flutter/material.dart';
 
-class ProfilePage extends StatelessWidget {
-  const ProfilePage({Key? key}) : super(key: key);
+class MyProfile extends StatelessWidget {
+  const MyProfile({Key? key}) : super(key: key);
 
   @override
+  Widget listTile({icon, title}) {
+    return Column(
+      children: [
+        Divider(
+          height: 1,
+        ),
+        ListTile(
+          leading: Icon(icon),
+          title: Text(title),
+          trailing: Icon(Icons.arrow_forward_ios),
+        ),
+      ],
+    );
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.blue[100],
       appBar: AppBar(
-        leading: BackButton(color: Colors.indigo),
-        elevation: 0,
-        backgroundColor: Colors.white,
-        actions: const [
-          IconButton(onPressed: null, icon: Icon(Icons.more_vert_outlined)),
-        ],
+        backgroundColor: Colors.blue[100],
+        elevation: 0.0,
+        title: Text(
+          "My Profile",
+          style: TextStyle(fontSize: 20, color: Colors.black),
+        ),
       ),
-      body: Column(
+      body: Stack(
         children: [
-          ClipRRect(
-            borderRadius: const BorderRadius.only(
-                bottomLeft: Radius.circular(20),
-                bottomRight: Radius.circular(20)),
-            child: Column(children: [
-              const Text(
-                "My Profile",
-                style: TextStyle(fontSize: 30),
+          Column(
+            children: [
+              Container(
+                height: 100,
+                color: Colors.blue[100],
               ),
-              Column(
-                children: [
-                  CircleAvatar(
-                    child: Image.asset("assets/profile1.jpg"),
-                    radius: 25,
+              Container(
+                height: 561,
+                width: double.infinity,
+                padding: EdgeInsets.symmetric(
+                  horizontal: 15,
+                  vertical: 15,
+                ),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(30),
+                    topRight: Radius.circular(30),
                   ),
-                  const Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Text(
-                      "Guildhall School of music and drama",
-                      style: TextStyle(
-                          color: Colors.grey, fontWeight: FontWeight.bold),
+                ),
+                child: ListView(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Container(
+                          width: 250,
+                          height: 80,
+                          padding: EdgeInsets.only(left: 20),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "i",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 15,
+                                        color: Colors.black),
+                                  ),
+                                  Text(
+                                    "j",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 15,
+                                        color: Colors.black),
+                                  ),
+                                  SizedBox(height: 10),
+                                  Text("")
+                                ],
+                              ),
+                              CircleAvatar(
+                                radius: 17,
+                                // backgroundColor: Colors.orangeAccent,
+                                child: CircleAvatar(
+                                  radius: 15,
+                                  child: Icon(Icons.edit,
+                                      color: Colors.orangeAccent),
+                                  backgroundColor: Colors.transparent,
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ],
                     ),
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.all(3.0),
-                    child: Text(
-                      "London, UK",
-                      style: TextStyle(
-                          color: Colors.grey, fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: const [Text("Photos"), Text("456")],
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: const [Text("Photos"), Text("456")],
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: const [Text("Photos"), Text("456")],
-                        ),
-                      )
-                    ],
-                  )
-                ],
-              )
-            ]),
+                    listTile(icon: Icons.shop_outlined, title: "Your Posts"),
+                    listTile(
+                        icon: Icons.person_outline, title: "Refer To Friends"),
+                    listTile(
+                        icon: Icons.file_copy_outlined,
+                        title: "Terms & Conditions"),
+                    listTile(
+                        icon: Icons.policy_outlined, title: "Privacy Policies"),
+                    listTile(icon: Icons.add_chart, title: "About"),
+                    listTile(
+                        icon: Icons.exit_to_app_outlined, title: "Log Out"),
+                  ],
+                ),
+              ),
+            ],
           ),
-          Container(
-            height: 400,
-            width: 400,
-            child: GridView.count(
-                mainAxisSpacing: 1,
-                crossAxisSpacing: 1,
-                childAspectRatio: 1,
-                primary: true,
-                shrinkWrap: true,
-                crossAxisCount: 2,
-                children: [
-                  Image.asset("assets/profile4.jpg"),
-                  Image.asset("assets/profile2.jpg"),
-                  Image.asset("assets/profile3.jpg"),
-                  Image.asset("assets/profile4.jpg"),
-                ]),
+          Padding(
+            padding: const EdgeInsets.only(
+              top: 40,
+              left: 25,
+            ),
+            child: CircleAvatar(
+                radius: (52),
+                backgroundColor: Colors.white,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(50),
+                  child: Image.asset("assets/profile1.jpg"),
+                )),
           )
         ],
       ),
