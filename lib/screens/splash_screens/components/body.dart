@@ -17,12 +17,12 @@ class _BodyState extends State<Body> {
   @override
   List<OnBoardingModel> _onBoardingList = [
     OnBoardingModel(
-        title: "Stay Focused",
+        title: "Stay Connected",
         description:
-            "Find a suitable music for yourself to stay focused more easily",
+            "Find a suitable person for yourself to talk to",
         image: "assets/image1.png"),
     OnBoardingModel(
-        title: "Take a deep breath",
+        title: "Share your thoughts",
         description:
             "Start your mindfulness journey with our meditation program",
         image: "assets/image2.jpg"),
