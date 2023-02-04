@@ -3,6 +3,7 @@ import 'dart:typed_data';
 
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:http/http.dart' as http;
+import 'package:image_picker/image_picker.dart';
 import 'package:saathi/models/user_post_model.dart';
 import 'package:saathi/utils/const.dart';
 
@@ -12,7 +13,7 @@ class Post {
   _uploadImageToStorage(Uint8List? image) async {
     Reference ref = firebaseStorage
         .ref()
-        .child('profilePic')
+        .child('posts')
         .child(firebaseAuth.currentUser!.uid);
     UploadTask uploadTask = ref.putData(image!);
     TaskSnapshot snap = await uploadTask;
@@ -31,6 +32,12 @@ class Post {
     }
   }
   Future<String> addPost(name, profileUrl, description, image) async {
+    String downloadUrl;
+    if (image != null) {
+      downloadUrl = await _uploadImageToStorage(image);
+    } else {
+      downloadUrl = '';
+    }
     var response = await http.post(
         Uri.parse("https://malicious-place-production.up.railway.app/addPost"),
         body: json.encode({
@@ -43,7 +50,7 @@ class Post {
           "comments": "0",
           "video": "",
           "isOnline": true,
-          "image": image,
+          "image": downloadUrl,
           "likes": "0"
         }));
     if (response.statusCode == 200) {

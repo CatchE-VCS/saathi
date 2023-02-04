@@ -243,7 +243,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 Container(
                   width: sizingInformation.screenSize.width,
-                  child: Image.asset(
+                  child: Image.network(
                     _post[index].image!,
                     fit: BoxFit.contain,
                   ),
