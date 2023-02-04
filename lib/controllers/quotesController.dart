@@ -28,7 +28,7 @@ class QuoteController {
       String data = response.body;
       return QuotesDb.fromJson(jsonDecode(response.body));
     } else {
-      return QuotesDb(quote: null, author: null);
+      throw Exception('Failed to load');
     }
   }
 }
