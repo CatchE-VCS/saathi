@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:saathi/utils/const.dart';
 
 class MyProfile extends StatelessWidget {
   const MyProfile({Key? key}) : super(key: key);
@@ -66,7 +67,7 @@ class MyProfile extends StatelessWidget {
                             children: [
                               Column(
                                 mainAxisAlignment:
-                                MainAxisAlignment.spaceAround,
+                                    MainAxisAlignment.spaceAround,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
@@ -92,8 +93,8 @@ class MyProfile extends StatelessWidget {
                                 // backgroundColor: Colors.blue[100],
                                 child: CircleAvatar(
                                   radius: 15,
-                                  child: Icon(Icons.edit,
-                                      color: Colors.blue[100]),
+                                  child:
+                                      Icon(Icons.edit, color: Colors.blue[100]),
                                   backgroundColor: Colors.transparent,
                                 ),
                               )
@@ -111,8 +112,11 @@ class MyProfile extends StatelessWidget {
                     listTile(
                         icon: Icons.policy_outlined, title: "Privacy Policies"),
                     listTile(icon: Icons.add_chart, title: "About"),
-                    listTile(
-                        icon: Icons.exit_to_app_outlined, title: "Log Out"),
+                    GestureDetector(
+                      onTap: () => firebaseAuth.signOut(),
+                      child: listTile(
+                          icon: Icons.exit_to_app_outlined, title: "Log Out"),
+                    ),
                   ],
                 ),
               ),
