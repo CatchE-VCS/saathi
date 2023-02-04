@@ -51,6 +51,7 @@ dependencies:
   dialog_flowtter: ^0.3.3
   sliding_up_panel: ^2.0.0+1
   http: ^0.13.5
+  image_picker: ^0.8.6+1
 
 dev_dependencies:
   flutter_test:
