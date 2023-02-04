@@ -20,7 +20,7 @@ class _BodyState extends State<Body> {
         title: "Stay Focused",
         description:
             "Find a suitable music for yourself to stay focused more easily",
-        image: "assets/image1.jpg"),
+        image: "assets/image1.png"),
     OnBoardingModel(
         title: "Take a deep breath",
         description:
