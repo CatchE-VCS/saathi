@@ -19,6 +19,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final AuthController _authController = AuthController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+
   bool? value = false;
 
   @override
