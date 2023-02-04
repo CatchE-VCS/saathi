@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:saathi/controllers/botController.dart';
+import 'package:saathi/controllers/postController.dart';
 import 'package:saathi/hope_screen.dart';
+import 'package:saathi/models/user_post_model.dart';
 import 'package:saathi/screens/post_screen.dart';
 import 'package:saathi/screens/profile_screen.dart';
 import 'package:saathi/utils/colors.dart';
@@ -21,15 +23,19 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   final _pc = PanelController();
   int currentIndex = 0;
-  final _post = Data.postList;
+  List<PostModel> _post = Data.postList;
   bool _showAppNavBar = true;
   late ScrollController _scrollController;
   bool _isScrollDown = false;
   int like = 0;
   int _selectedindex = 0;
+  void getAllPosts() async {
+    _post = await Post().getData();
+  }
 
   @override
   void initState() {
+    getAllPosts();
     super.initState();
     _scrollController = ScrollController();
     _initialScroll();
@@ -116,8 +122,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     context, MaterialPageRoute(builder: (context) => Quotes()));
               }
               if (index == 4) {
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => ProfilePage()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => ProfilePage()));
               }
               if (index == 2) {
                 _pc.open();
@@ -178,9 +184,9 @@ class _HomeScreenState extends State<HomeScreen> {
         itemCount: _post.length,
         itemBuilder: (BuildContext context, int index) {
           return Container(
-            padding: EdgeInsets.symmetric(vertical: 8, horizontal: 15),
-            margin: EdgeInsets.only(bottom: 0.0, top: 8),
-            decoration: BoxDecoration(
+            padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 15),
+            margin: const EdgeInsets.only(bottom: 0.0, top: 8),
+            decoration: const BoxDecoration(
                 color: Colors.white,
                 border: Border(
                     top: BorderSide(color: Colors.black54, width: 0.50),
@@ -195,25 +201,25 @@ class _HomeScreenState extends State<HomeScreen> {
                       decoration: BoxDecoration(
                           // borderRadius: BorderRadius.all(Radius.circular(0)),
                           image: DecorationImage(
-                              image: AssetImage(_post[index].profileUrl))),
+                              image: AssetImage(_post[index].profileUrl!))),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 4,
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          _post[index].name,
-                          style: TextStyle(
+                          _post[index].name!,
+                          style: const TextStyle(
                               fontSize: 18, fontWeight: FontWeight.bold),
                         ),
                         Container(
                           width: sizingInformation.screenSize.width / 1.34,
                           child: Text(
-                            _post[index].headline,
-                            style:
-                                TextStyle(fontSize: 12, color: Colors.black54),
+                            _post[index].headline!,
+                            style: const TextStyle(
+                                fontSize: 12, color: Colors.black54),
                             overflow: TextOverflow.ellipsis,
                           ),
                         ),
@@ -225,11 +231,11 @@ class _HomeScreenState extends State<HomeScreen> {
                   height: 10,
                 ),
                 Text(
-                  _post[index].description,
+                  _post[index].description!,
                   style: TextStyle(fontSize: 14),
                 ),
                 Text(
-                  _post[index].tags,
+                  _post[index].tags!,
                   style: TextStyle(color: kPrimaryColor),
                 ),
                 SizedBox(
@@ -238,7 +244,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 Container(
                   width: sizingInformation.screenSize.width,
                   child: Image.asset(
-                    _post[index].image,
+                    _post[index].image!,
                     fit: BoxFit.contain,
                   ),
                 ),
@@ -272,7 +278,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             width: 5,
                           ),
                           Text(
-                            _post[index].likes,
+                            _post[index].likes!,
                             style: TextStyle(fontSize: 14),
                           )
                         ],
@@ -281,7 +287,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     Container(
                       child: Row(
                         children: [
-                          Text(_post[index].comments),
+                          Text(
+                            _post[index].comments!,
+                          ),
                           Text(" comments")
                         ],
                       ),

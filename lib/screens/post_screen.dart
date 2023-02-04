@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:saathi/controllers/postController.dart';
 import 'package:saathi/screens/home/home_screen.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:saathi/screens/home/home_screen.dart';
 
 class PostWidget extends StatelessWidget {
+  final user = 
   final textController  = TextEditingController();
   final _pc ;
   PostWidget(this._pc, {super.key});
@@ -28,7 +30,7 @@ class PostWidget extends StatelessWidget {
                 IconButton(onPressed: null, icon: Icon(Icons.access_time_rounded)),
                 Padding(
                   padding: EdgeInsets.all(8.0),
-                  child: ElevatedButton(onPressed: null, child: Text("Post", style: TextStyle(color: Colors.white),)),
+                  child: ElevatedButton(onPressed: ()=> Post().addPost(textController), child: Text("Post", style: TextStyle(color: Colors.white),)),
                 ),
               ],
             ),
