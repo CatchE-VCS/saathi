@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:responsive_builder/responsive_builder.dart';
-import 'package:saathi/utils/const.dart';
 
 class CustomAppBar extends StatelessWidget {
   final SizingInformation sizingInformation;
@@ -54,7 +53,7 @@ class CustomAppBar extends StatelessWidget {
               height: 30,
               width: 30,
               child: InkWell(
-                  onTap: () => firebaseAuth.signOut(),
+                  onTap: () => {},
                   child: Icon(FontAwesomeIcons.facebookMessenger))),
         ],
       ),

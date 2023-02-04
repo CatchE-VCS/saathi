@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
 import 'package:saathi/firebase_options.dart';
 import 'package:saathi/screens/auth/login_screen.dart';
 import 'package:saathi/screens/auth/signup_screen.dart';
@@ -80,7 +79,9 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     super.initState();
     Timer(
-        Duration(seconds: 3, milliseconds: 500),
+        Duration(
+          seconds: 2,
+        ),
         () => Navigator.pushReplacement(
             context, MaterialPageRoute(builder: (context) => SplashScreen())));
   }
@@ -88,8 +89,6 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white,
-      child: Lottie.asset("assets/splash.json"),
-    );
+        color: Colors.white, child: Image.asset("assets/logo_1.png"));
   }
 }
