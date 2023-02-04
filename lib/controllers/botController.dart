@@ -24,7 +24,8 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFFFD495),
+      //backgroundColor: Color(0xFFFFD495),
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text(
           'Your Dost',
@@ -32,6 +33,7 @@ class _HomeState extends State<Home> {
               TextStyle(color: Color(0xFFFFD495), fontWeight: FontWeight.bold),
         ),
         backgroundColor: Color(0xFFFAAB78),
+
       ),
       body: Container(
         child: Column(
@@ -39,6 +41,7 @@ class _HomeState extends State<Home> {
             Expanded(child: MessagesScreen(messages: messages)),
             Container(
               padding: EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+              //color: Color(0xFFFAAB78),
               color: Color(0xFFFAAB78),
               child: Row(
                 children: [
@@ -48,8 +51,9 @@ class _HomeState extends State<Home> {
                     style: TextStyle(color: Colors.white),
                     decoration: InputDecoration(
                       labelText: "Type your message here",
+                      labelStyle: TextStyle(color: Colors.black87),
                       filled: true,
-                      fillColor: Colors.black,
+                      fillColor: Color(0xFFFFD495),
                       // labelStyle:
                       //     TextStyle(fontFamily: GoogleFonts.poppins().fontFamily),
                     ),

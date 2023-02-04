@@ -58,7 +58,7 @@ class _QuotesState extends State<Quotes> {
 
                                 ],
                               ),
-                              SizedBox(height: 100,),
+                              //SizedBox(height: 30,),
                               GestureDetector(
                                 onTap: () async => await getQuotes(),
                                 child: Container(
