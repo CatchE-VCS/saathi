@@ -13,6 +13,8 @@ import 'package:saathi/widgets/custom_app_bar.dart';
 import 'package:saathi/widgets/custom_buttons.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
+import '../../models/onboarding_page.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -127,6 +129,10 @@ class _HomeScreenState extends State<HomeScreen> {
               }
               if (index == 2) {
                 _pc.open();
+              }
+              if (index == 3) {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => OnBoardingPage()));
               }
             },
             iconSize: 27,
