@@ -82,11 +82,6 @@ class PostWidget extends StatelessWidget {
                               ),
                               IconButton(
                                 onPressed: null,
-                                icon: Icon(Icons.video_call),
-                                color: Color(0xff710193),
-                              ),
-                              IconButton(
-                                onPressed: null,
                                 icon: Icon(Icons.photo_library_outlined),
                                 color: Color(0xff710193),
                               ),
