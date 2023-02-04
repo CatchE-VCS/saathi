@@ -125,7 +125,7 @@ class _HomeScreenState extends State<HomeScreen> {
               }
               if (index == 4) {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => ProfilePage()));
+                    MaterialPageRoute(builder: (context) => MyProfile()));
               }
               if (index == 2) {
                 _pc.open();
