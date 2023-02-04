@@ -15,8 +15,8 @@ class Quotes extends StatefulWidget {
 String quote = "";
 
 class _QuotesState extends State<Quotes> {
-  late String? quote;
-  late String? author;
+  String? quote ;
+  String? author ;
   getQuotes() async {
     var quotes = await QuoteController().getQuotes();
 
@@ -25,9 +25,13 @@ class _QuotesState extends State<Quotes> {
     setState(() {});
   }
 
-  @override
-  void initState() async {
+  void qote() async {
     await getQuotes();
+  }
+
+  @override
+  void initState() {
+    qote();
     super.initState();
   }
 
@@ -35,41 +39,55 @@ class _QuotesState extends State<Quotes> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: Container(
-          margin: const EdgeInsets.all(30),
-          color: Color(0xffd1add6),
-          child: Center(
-            child: Column(
-              // mainAxisAlignment: MainAxisAlignment.end,
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Text(quote!),
-                Text(author!),
-                GestureDetector(
-                  onTap: () async => await getQuotes(),
-                  child: Container(
-                    width: 50,
-                    height: 50,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      color: Colors.indigo,
-                    ),
-                    child: Center(
-                      child: Text(
-                        "Next",
-                        style: TextStyle(
-                            fontFamily: GoogleFonts.poppins().fontFamily,
-                            color: Colors.white,
-                            fontSize: 23),
+        body: Center(
+            child: Container(
+              padding: EdgeInsets.all(10),
+                      color: Color(0xffb9b8b8),
+                        child: Center(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              Column(
+
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                children: [
+                                  Text(quote ??= "", style: GoogleFonts.robotoMono(textStyle: TextStyle(fontSize: 30, fontWeight: FontWeight.w700, color: Color(0xff101010))),),
+                                  SizedBox(height: 90,),
+                                  Text(author ??= "", style: GoogleFonts.robotoMono(textStyle: TextStyle(fontSize: 30, fontWeight: FontWeight.w700, color: Color(0xff101010))),),
+
+                                ],
+                              ),
+                              SizedBox(height: 100,),
+                              GestureDetector(
+                                onTap: () async => await getQuotes(),
+                                child: Container(
+                                  width: 70,
+                                  height: 50,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20),
+                                    color: Color(0xff403f3f),
+                                  ),
+                                  child: Center(
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Text(
+                                        "Next",
+                                        style: TextStyle(
+                                            fontFamily: GoogleFonts.poppins().fontFamily,
+                                            color: Color(0xffb9b8b8),
+                                            fontSize: 18),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
                       ),
-                    ),
                   ),
                 ),
-              ],
-            ),
-          ),
-        ),
-      ),
     );
   }
 }
