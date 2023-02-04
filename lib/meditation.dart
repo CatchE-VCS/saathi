@@ -39,9 +39,7 @@ class _HomePageState extends State<HomePage> {
           body: Container(
             child: Column(
               children: [
-                _appBarWidget(),
                 _containerWidget(),
-                _bottomMenuWidget(),
               ],
             ),
           ),

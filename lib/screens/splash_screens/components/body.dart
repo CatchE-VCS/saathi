@@ -1,152 +1,168 @@
 import 'package:flutter/material.dart';
 import 'package:saathi/screens/auth/login_screen.dart';
-import 'package:saathi/utils/size_config.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-import 'splash_content.dart';
+import '../../../models/onboarding_model.dart';
+import '../../../utils/app_color.dart';
+import '../../../utils/app_string.dart';
 
 class Body extends StatefulWidget {
-  const Body({super.key});
+  const Body({Key? key}) : super(key: key);
 
   @override
   State<Body> createState() => _BodyState();
 }
 
 class _BodyState extends State<Body> {
-  int currentPage = 0;
-  List<Map<String, String>> splashData = [
-    {
-      "text": "Connect with people and share your experience.",
-      "image": "assets/image1.jpg"
-    },
-    {
-      "text": "Explore a world full of positivity.",
-      "image": "assets/image2.jpg"
-    },
-    {
-      "text": "Find the best suggestions from people.",
-      "image": "assets/image3.jpg"
-    },
+  @override
+  List<OnBoardingModel> _onBoardingList = [
+    OnBoardingModel(
+        title: "Stay Focused",
+        description:
+            "Find a suitable music for yourself to stay focused more easily",
+        image: "assets/image1.jpg"),
+    OnBoardingModel(
+        title: "Take a deep breath",
+        description:
+            "Start your mindfulness journey with our meditation program",
+        image: "assets/image2.jpg"),
   ];
-  // signInWithGoogle() async {
-  //   setState(() {
-  //     _isLoading = true;
-  //   });
-  //   String res = await _authController.signinWithGoogle();
-  //   if (res != 'success') {
-  //     setState(() {
-  //       _isLoading = false;
-  //     });
-  //     if (!mounted) return;
-  //     return showSnackBarr('Could not log you in!!\n Try again .....', context);
-  //   } else {
-  //     if (!mounted) return;
-  //     showSnackBarr(
-  //         'Congratulations you have been successfully signed in..', context);
-  //     return Navigator.of(context).pushReplacementNamed('/home');
-  //   }
-  // }
+  final controller = PageController();
+
+  int selectedIndex = 0;
+
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Container(
-        decoration: const BoxDecoration(color: Colors.white),
-        width: double.infinity,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            const SizedBox(
-              height: 1,
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 1),
-              child: Image.asset(
-                "assets/logo_1.png",
-                width: 230,
-                height: 150,
-              ),
-            ),
-            Expanded(
-              flex: 3,
-              child: PageView.builder(
-                onPageChanged: (value) {
-                  setState(() {
-                    currentPage = value;
-                  });
-                },
-                itemCount: splashData.length,
-                itemBuilder: (context, index) => SplashContent(
-                  image: splashData[index]['image']!,
-                  text: splashData[index]['text']!,
-                ),
-              ),
-            ),
-            Expanded(
-              flex: 2,
-              child: Padding(
-                padding: EdgeInsets.symmetric(
-                    horizontal: getProportionateScreenWidth(20)),
-                child: Column(children: <Widget>[
-                  const Spacer(),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: List.generate(
-                      splashData.length,
-                      (index) => buildDot(index: index),
-                    ),
+    return AnimatedContainer(
+      duration: Duration(seconds: 1),
+      color: selectedIndex == 0 ? AppColors.pinkColors : AppColors.blueColors,
+      child: SafeArea(
+        bottom: false,
+        child: Scaffold(
+          body: Container(
+            child: Column(
+              children: [
+                Expanded(
+                  child: AnimatedContainer(
+                    duration: Duration(seconds: 1),
+                    decoration: BoxDecoration(
+                        color: selectedIndex == 0
+                            ? AppColors.pinkColors
+                            : AppColors.blueColors,
+                        borderRadius: BorderRadius.only(
+                            bottomRight: Radius.circular(20),
+                            bottomLeft: Radius.circular(20))),
+                    child: _containerPaginationWidget(),
                   ),
-                  const Spacer(flex: 1),
-                  GestureDetector(
-                    onTap: () => Navigator.pushReplacement(context,
-                        MaterialPageRoute(builder: (context) => LoginScreen())),
-                    child: Container(
-                      width: 250,
-                      height: 50,
-                      margin: EdgeInsets.only(bottom: 20),
-                      decoration: BoxDecoration(
-                          color: Colors.indigo,
-                          borderRadius: BorderRadius.circular(25)),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            "Get Started",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold),
-                          ),
-                          SizedBox(
-                            width: 3,
-                          ),
-                          Icon(
-                            Icons.arrow_forward_rounded,
-                            color: Colors.white,
-                          )
-                        ],
-                      ),
-                    ),
-                  )
-                ]),
-              ),
+                ),
+                _indicatorWidget(),
+                _buttonWidget(),
+                SizedBox(
+                  height: 50,
+                ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );
   }
 
-  AnimatedContainer buildDot({required int index}) {
-    return AnimatedContainer(
-      duration: Duration(milliseconds: 100),
-      margin: EdgeInsets.only(right: 5),
-      height: 10,
-      width: currentPage == index ? 30 : 20,
-      decoration: BoxDecoration(
-        color: currentPage == index ? Colors.grey[800] : Colors.white,
+  Widget _containerPaginationWidget() {
+    return PageView.builder(
+        controller: controller,
+        itemCount: _onBoardingList.length,
+        onPageChanged: (index) {
+          setState(() {
+            selectedIndex = index;
+          });
+        },
+        itemBuilder: (context, index) {
+          return Container(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset(_onBoardingList[index].image),
+                SizedBox(
+                  height: 40,
+                ),
+                Text(
+                  _onBoardingList[index].title,
+                  style: TextStyle(
+                    fontSize: 28,
+                    color: AppColors.primaryColors,
+                    fontFamily: AppString.boldFontFamily,
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Container(
+                  margin: EdgeInsets.symmetric(horizontal: 30),
+                  child: Text(
+                    _onBoardingList[index].description,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 18,
+                        fontFamily: AppString.normalFontFamily),
+                  ),
+                ),
+              ],
+            ),
+          );
+        });
+  }
 
-        border: Border.all(
-          color: currentPage == index ? Colors.grey[800]! : Colors.black,
+  Widget _indicatorWidget() {
+    return Container(
+      margin: EdgeInsets.symmetric(horizontal: 30, vertical: 20),
+      child: SmoothPageIndicator(
+        controller: controller,
+        count: _onBoardingList.length,
+        effect: ExpandingDotsEffect(
+          spacing: 10,
+          dotHeight: 10,
+          dotWidth: 10,
+          activeDotColor: AppColors.primaryColors,
+          dotColor: Colors.grey,
         ),
-        borderRadius: BorderRadius.circular(10), //Border.all
+      ),
+    );
+  }
+
+  Widget _buttonWidget() {
+    return Container(
+      margin: EdgeInsets.symmetric(horizontal: 40),
+      child: SizedBox(
+        width: double.infinity,
+        child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+            backgroundColor: AppColors.primaryColors,
+          ),
+          onPressed: () {
+            if (selectedIndex == 0) {
+              controller.animateToPage(1,
+                  duration: Duration(seconds: 1), curve: Curves.easeIn);
+            } else {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => LoginScreen()),
+              );
+            }
+          },
+          child: Text(
+            selectedIndex == 0 ? "Continue" : "Let's go",
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 18,
+              fontFamily: AppString.boldFontFamily,
+            ),
+          ),
+        ),
       ),
     );
   }
