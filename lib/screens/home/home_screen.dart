@@ -3,6 +3,7 @@ import 'package:flutter/rendering.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:saathi/controllers/botController.dart';
 import 'package:saathi/controllers/postController.dart';
+import 'package:saathi/games/games.dart';
 import 'package:saathi/hope_screen.dart';
 import 'package:saathi/models/user_post_model.dart';
 import 'package:saathi/screens/post_screen.dart';
@@ -91,6 +92,33 @@ class _HomeScreenState extends State<HomeScreen> {
       panel: PostWidget(_pc),
       body: SafeArea(
         child: Scaffold(
+          drawer: Drawer(
+            child: Container(
+              color: Colors.deepPurple,
+              child: ListView(
+                padding: EdgeInsets.zero,
+                children: [
+                  ListTile(
+                    leading: Icon(
+                      Icons.home,
+                      color: Colors.black,
+                    ),
+                    title: Text(
+                      "Home",
+                      textScaleFactor: 1.2,
+                      style: TextStyle(
+                        color: Colors.black,
+                      ),
+                    ),
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Games()));
+                    },
+                  ),
+                ],
+              ),
+            ),
+          ),
           appBar: AppBar(
             centerTitle: true,
             title: Text(ghhh[_selectedindex]),
