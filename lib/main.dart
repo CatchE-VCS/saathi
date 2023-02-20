@@ -9,12 +9,13 @@ import 'package:saathi/screens/auth/signup_screen.dart';
 import 'package:saathi/screens/home/home_screen.dart';
 import 'package:saathi/screens/splash_screens/components/splash_screen.dart';
 import 'package:saathi/utils/const.dart';
-
+import 'package:flutter_web_plugins/url_strategy.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  usePathUrlStrategy();
   firebaseAuth.authStateChanges().listen((User? user) {
     if (user == null) {
       runApp(const MyApp());
