@@ -60,10 +60,13 @@ class _PostWidgetState extends State<PostWidget> {
                 Padding(
                   padding: EdgeInsets.all(8.0),
                   child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.indigo[400],
+                      ),
                       onPressed: () async {
                         await Post().addPost(
                             userName, userProfUrl, textController.text, _image);
-                            widget._pc.close();
+                        widget._pc.close();
                         Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -85,7 +88,7 @@ class _PostWidgetState extends State<PostWidget> {
           child: Column(
             children: [
               TextField(
-                maxLength: 700,
+                maxLength: 500,
                 maxLines: 29,
                 decoration: InputDecoration(
                   hintText: "What do you want to talk about?",
