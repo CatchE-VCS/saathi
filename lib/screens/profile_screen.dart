@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:saathi/utils/const.dart';
 
-class MyProfile extends StatelessWidget {
+class MyProfile extends StatefulWidget {
   const MyProfile({Key? key}) : super(key: key);
 
+  @override
+  State<MyProfile> createState() => _MyProfileState();
+}
+
+class _MyProfileState extends State<MyProfile> {
   @override
   Widget listTile({icon, title}) {
     return Column(
@@ -20,17 +25,19 @@ class MyProfile extends StatelessWidget {
     );
   }
 
+  // const userName = firebaseAuth.currentUser?.displayName;
+
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.blue[100],
-      appBar: AppBar(
-        backgroundColor: Colors.blue[100],
-        elevation: 0.0,
-        title: Text(
-          "My Profile",
-          style: TextStyle(fontSize: 20, color: Colors.black),
-        ),
-      ),
+      // appBar: AppBar(
+      //   backgroundColor: Colors.blue[100],
+      //   elevation: 0.0,
+      //   title: Text(
+      //     "My Profile",
+      //     style: TextStyle(fontSize: 20, color: Colors.black),
+      //   ),
+      // ),
       body: Stack(
         children: [
           Column(
@@ -71,7 +78,7 @@ class MyProfile extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    "i",
+                                    "",
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 15,

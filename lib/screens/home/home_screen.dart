@@ -4,7 +4,6 @@ import 'package:responsive_builder/responsive_builder.dart';
 import 'package:saathi/controllers/botController.dart';
 import 'package:saathi/controllers/postController.dart';
 import 'package:saathi/hope_screen.dart';
-import 'package:saathi/meditation.dart';
 import 'package:saathi/models/user_post_model.dart';
 import 'package:saathi/screens/post_screen.dart';
 import 'package:saathi/screens/profile_screen.dart';
@@ -28,7 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
     HomeScreen(),
     Quotes(),
     Scaffold(),
-    HomePage(),
+    OnBoardingPage(),
     MyProfile(),
   ];
   final _pc = PanelController();
@@ -42,6 +41,13 @@ class _HomeScreenState extends State<HomeScreen> {
     _post = await Post().getData();
   }
 
+  List ghhh = [
+    "Positivity Wall",
+    "Hope Chamber",
+    "Add Post",
+    "Meditation Dome",
+    "Profile"
+  ];
   @override
   void initState() {
     getAllPosts();
@@ -80,12 +86,19 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return SlidingUpPanel(
       minHeight: 0,
-      maxHeight: 780,
+      maxHeight: MediaQuery.of(context).size.height - 100,
       controller: _pc,
       panel: PostWidget(_pc),
       body: SafeArea(
         child: Scaffold(
-
+          appBar: AppBar(
+            centerTitle: true,
+            title: Text(ghhh[_selectedindex]),
+            backgroundColor: Colors.indigo[400],
+            shape: RoundedRectangleBorder(
+                borderRadius:
+                    BorderRadius.vertical(bottom: Radius.circular(10))),
+          ),
           extendBody: true,
           body: (_selectedindex == 0)
               ? ResponsiveBuilder(builder:
