@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'gamesService.dart';
+import 'games_service.dart';
 
 class Games extends StatelessWidget {
   final _links = ['https://skribbl.io/'];
@@ -18,7 +18,7 @@ class Games extends StatelessWidget {
 
   Widget _urlButton(BuildContext context, String url) {
     return Container(
-        padding: EdgeInsets.all(20.0),
+        padding: const EdgeInsets.all(20.0),
         child: ElevatedButton(
           child: Text(url),
           onPressed: () => _handleURLButtonPress(context, url),
