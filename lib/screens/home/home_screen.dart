@@ -1,7 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:saathi/controllers/botController.dart';
+import 'package:saathi/controllers/likesController.dart';
 import 'package:saathi/controllers/postController.dart';
 import 'package:saathi/games/games.dart';
 import 'package:saathi/hope_screen.dart';
@@ -37,6 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
   late ScrollController _scrollController;
   bool _isScrollDown = false;
   int like = 0;
+  int likes = 0;
   int _selectedindex = 0;
   void getAllPosts() async {
     _post = await Post().getData();
@@ -75,6 +78,15 @@ class _HomeScreenState extends State<HomeScreen> {
         }
       }
     });
+  }
+
+  final user = FirebaseAuth.instance.currentUser;
+  getLikes() async {
+    var like = await LikesController().getLikes(user!.uid);
+
+    likes = like.likes!;
+    print(likes);
+    setState(() {});
   }
 
   @override
@@ -234,137 +246,133 @@ class _HomeScreenState extends State<HomeScreen> {
         child: MediaQuery.removePadding(
       context: context,
       removeTop: true,
-      child: ListView.builder(
-        controller: _scrollController,
-        itemCount: _post.length,
-        itemBuilder: (BuildContext context, int index) {
-          return Container(
-            padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 15),
-            margin: const EdgeInsets.only(bottom: 0.0, top: 8),
-            decoration: const BoxDecoration(
-                color: Colors.white,
-                border: Border(
-                    top: BorderSide(color: Colors.black54, width: 0.50),
-                    bottom: BorderSide(color: Colors.black54, width: 0.50))),
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    Container(
-                      width: 50,
-                      height: 50,
-                      decoration: BoxDecoration(
-                          // borderRadius: BorderRadius.all(Radius.circular(0)),
-                          image: DecorationImage(
-                              image: AssetImage(_post[index].profileUrl!))),
-                    ),
-                    const SizedBox(
-                      width: 4,
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          _post[index].name!,
-                          style: const TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.bold),
-                        ),
-                        Container(
-                          width: sizingInformation.screenSize.width / 1.34,
-                          child: Text(
-                            _post[index].headline!,
-                            style: const TextStyle(
-                                fontSize: 12, color: Colors.black54),
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ),
-                      ],
-                    )
-                  ],
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Text(
-                  _post[index].description!,
-                  style: TextStyle(fontSize: 14),
-                ),
-                Text(
-                  _post[index].tags!,
-                  style: TextStyle(color: kPrimaryColor),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Container(
-                  width: sizingInformation.screenSize.width,
-                  child: Image.network(
-                    _post[index].image!,
-                    fit: BoxFit.contain,
-                    loadingBuilder: (context, child, loadingProgress) {
-                      if (loadingProgress == null) return child;
-
-                      return const CircularProgressIndicator();
-                    },
-                  ),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      child: Row(
+      child: RefreshIndicator(
+        onRefresh: () async {
+          getAllPosts();
+        },
+        child: ListView.builder(
+          controller: _scrollController,
+          itemCount: _post.length,
+          itemBuilder: (BuildContext context, int index) {
+            return Container(
+              padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 15),
+              margin: const EdgeInsets.only(bottom: 0.0, top: 8),
+              decoration: const BoxDecoration(
+                  color: Colors.white,
+                  border: Border(
+                      top: BorderSide(color: Colors.black54, width: 0.50),
+                      bottom: BorderSide(color: Colors.black54, width: 0.50))),
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      Container(
+                        width: 50,
+                        height: 50,
+                        decoration: BoxDecoration(
+                            // borderRadius: BorderRadius.all(Radius.circular(0)),
+                            image: DecorationImage(
+                                image: AssetImage(_post[index].profileUrl!))),
+                      ),
+                      const SizedBox(
+                        width: 4,
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Container(
-                            width: 25,
-                            height: 25,
-                            child: Image.asset('assets/icons/like_icon.png'),
+                          Text(
+                            _post[index].name!,
+                            style: const TextStyle(
+                                fontSize: 18, fontWeight: FontWeight.bold),
                           ),
                           Container(
-                            width: 25,
-                            height: 25,
-                            child:
-                                Image.asset('assets/icons/celebrate_icon.png'),
+                            width: sizingInformation.screenSize.width / 1.34,
+                            child: Text(
+                              _post[index].headline!,
+                              style: const TextStyle(
+                                  fontSize: 12, color: Colors.black54),
+                              overflow: TextOverflow.ellipsis,
+                            ),
                           ),
-                          if (index == 0 || index == 4 || index == 6)
+                        ],
+                      )
+                    ],
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    _post[index].description!,
+                    style: TextStyle(fontSize: 14),
+                  ),
+                  Text(
+                    _post[index].tags!,
+                    style: TextStyle(color: kPrimaryColor),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Container(
+                    width: sizingInformation.screenSize.width,
+                    child: Image.network(
+                      _post[index].image!,
+                      fit: BoxFit.contain,
+                      loadingBuilder: (context, child, loadingProgress) {
+                        if (loadingProgress == null) return child;
+                        return Container(
+                          width: 150,
+                          height: 150,
+                          child: Image.asset("assets/loading.gif"),
+                        );
+                      },
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        child: Row(
+                          children: [
                             Container(
                               width: 25,
                               height: 25,
-                              child: Image.asset('assets/icons/love_icon.png'),
+                              child: Image.asset('assets/icons/like_icon.png'),
                             ),
-                          SizedBox(
-                            width: 5,
-                          ),
-                          Text(
-                            _post[index].likes!,
-                            style: TextStyle(fontSize: 14),
-                          )
-                        ],
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Text(
+                              likes.toString(),
+                              style: TextStyle(fontSize: 14),
+                            )
+                          ],
+                        ),
                       ),
-                    ),
-                    Container(
-                      child: Row(
-                        children: [
-                          Text(
-                            _post[index].comments!,
-                          ),
-                          Text(" comments")
-                        ],
-                      ),
-                    )
-                  ],
-                ),
-                Divider(
-                  thickness: 0.50,
-                  color: Colors.black26,
-                ),
-                _rowButton(),
-              ],
-            ),
-          );
-        },
+                      Container(
+                        child: Row(
+                          children: [
+                            Text(
+                              _post[index].comments!,
+                            ),
+                            Text(" comments")
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                  Divider(
+                    thickness: 0.50,
+                    color: Colors.black26,
+                  ),
+                  _rowButton(index),
+                ],
+              ),
+            );
+          },
+        ),
       ),
     ));
   }
@@ -381,13 +389,19 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
-  Widget _rowButton() {
+  Widget _rowButton(int index) {
     return Container(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           InkWell(
-            onTap: () {},
+            onTap: () {
+              LikesController().addLike(user!.uid, _post[index].id!);
+              setState(() {
+                getLikes();
+              });
+              print(_post[index].id!);
+            },
             child: rowSingleButton(
                 color: Colors.black,
                 name: "Up vote",

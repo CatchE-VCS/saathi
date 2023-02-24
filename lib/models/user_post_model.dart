@@ -12,7 +12,7 @@ class UserPostModel {
   final String likes;
   final String tags;
   final bool isOnline;
-
+  final String id;
   UserPostModel(
       {required this.profileUrl,
       required this.name,
@@ -24,8 +24,10 @@ class UserPostModel {
       required this.comments,
       required this.likes,
       required this.tags,
-      required this.isOnline});
+      required this.isOnline,
+      required this.id});
 }
+
 List<PostModel> postsFromJson(String str) =>
     List<PostModel>.from(json.decode(str).map((x) => PostModel.fromJson(x)));
 
@@ -45,21 +47,22 @@ class PostModel {
   final String? tags;
   final bool? isOnline;
   DateTime postAdded;
+  final String? id;
 
-  PostModel({
-    required this.profileUrl,
-    required this.name,
-    required this.headline,
-    required this.isVideoPost,
-    required this.description,
-    required this.video,
-    required this.image,
-    required this.comments,
-    required this.likes,
-    required this.tags,
-    required this.isOnline,
-    required this.postAdded,
-  });
+  PostModel(
+      {required this.profileUrl,
+      required this.name,
+      required this.headline,
+      required this.isVideoPost,
+      required this.description,
+      required this.video,
+      required this.image,
+      required this.comments,
+      required this.likes,
+      required this.tags,
+      required this.isOnline,
+      required this.postAdded,
+      required this.id});
   factory PostModel.fromJson(Map<String, dynamic> json) => PostModel(
         profileUrl: json["profileUrl"],
         name: json["name"],
@@ -73,5 +76,6 @@ class PostModel {
         tags: json["tags"],
         isOnline: json["isOnline"],
         postAdded: DateTime.parse(json["post_added"]),
+        id: json["_id"],
       );
 }

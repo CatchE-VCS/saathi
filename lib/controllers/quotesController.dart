@@ -1,4 +1,5 @@
 import 'dart:convert';
+
 import 'package:http/http.dart' as http;
 
 class QuotesDb {
@@ -23,7 +24,7 @@ class QuotesDb {
 class QuoteController {
   Future<QuotesDb> getQuotes() async {
     var response = await http
-        .get(Uri.parse("https://overjoyed-sound-production.up.railway.app/"));
+        .get(Uri.parse("http://saathi-quotes-production.up.railway.app/"));
     if (response.statusCode == 200) {
       String data = response.body;
       return QuotesDb.fromJson(jsonDecode(response.body));
