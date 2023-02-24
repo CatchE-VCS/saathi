@@ -395,8 +395,8 @@ class _HomeScreenState extends State<HomeScreen> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           InkWell(
-            onTap: () {
-              LikesController().addLike(user!.uid, _post[index].id!);
+            onTap: () async {
+              await LikesController().addLike(user!.uid, _post[index].id!);
               setState(() {
                 getLikes(_post[index].id!);
               });
