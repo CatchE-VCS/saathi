@@ -8,7 +8,6 @@ import 'package:saathi/models/user_post_model.dart';
 import 'package:saathi/utils/const.dart';
 
 class Post {
-  
   // add image to storage
   _uploadImageToStorage(Uint8List? image) async {
     Reference ref = firebaseStorage
@@ -31,6 +30,7 @@ class Post {
       print("No image selected");
     }
   }
+
   Future<String> addPost(name, profileUrl, description, image) async {
     String downloadUrl;
     if (image != null) {
@@ -39,7 +39,7 @@ class Post {
       downloadUrl = '';
     }
     var response = await http.post(
-        Uri.parse("https://malicious-place-production.up.railway.app/addPost"),
+        Uri.parse("http://saathi-posts-production.up.railway.app/addPost"),
         body: json.encode({
           "name": name,
           "profileUrl": profileUrl,
@@ -64,8 +64,8 @@ class Post {
   }
 
   Future<List<PostModel>> getData() async {
-    http.Response response = await http.get(
-        Uri.parse("https://malicious-place-production.up.railway.app/posts"));
+    http.Response response = await http
+        .get(Uri.parse("http://saathi-posts-production.up.railway.app/posts"));
     if (response.statusCode == 200) {
       String data = response.body;
       return postsFromJson(data);

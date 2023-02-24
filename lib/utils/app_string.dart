@@ -1,4 +1,4 @@
-class AppString {
-  static String normalFontFamily = "GilroyLight";
-  static String boldFontFamily = "GilroyBold";
-}
+// class AppString {
+//   static String normalFontFamily = "GilroyLight";
+//   static String boldFontFamily = "GilroyBold";
+// }

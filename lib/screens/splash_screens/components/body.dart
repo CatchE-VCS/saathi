@@ -4,7 +4,6 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../../models/onboarding_model.dart';
 import '../../../utils/app_color.dart';
-import '../../../utils/app_string.dart';
 
 class Body extends StatefulWidget {
   const Body({Key? key}) : super(key: key);
@@ -18,8 +17,7 @@ class _BodyState extends State<Body> {
   List<OnBoardingModel> _onBoardingList = [
     OnBoardingModel(
         title: "Stay Connected",
-        description:
-            "Find a suitable person for yourself to talk to",
+        description: "Find a suitable person for yourself to talk to",
         image: "assets/image1.png"),
     OnBoardingModel(
         title: "Share your thoughts",
@@ -92,7 +90,6 @@ class _BodyState extends State<Body> {
                   style: TextStyle(
                     fontSize: 28,
                     color: AppColors.primaryColors,
-                    fontFamily: AppString.boldFontFamily,
                   ),
                 ),
                 SizedBox(
@@ -104,9 +101,9 @@ class _BodyState extends State<Body> {
                     _onBoardingList[index].description,
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18,
-                        fontFamily: AppString.normalFontFamily),
+                      color: Colors.white,
+                      fontSize: 18,
+                    ),
                   ),
                 ),
               ],
@@ -159,7 +156,6 @@ class _BodyState extends State<Body> {
             style: TextStyle(
               color: Colors.white,
               fontSize: 18,
-              fontFamily: AppString.boldFontFamily,
             ),
           ),
         ),

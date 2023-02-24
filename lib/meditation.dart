@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:saathi/utils/app_color.dart';
 import 'package:saathi/utils/app_image.dart';
-import 'package:saathi/utils/app_string.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -100,9 +99,9 @@ class _HomePageState extends State<HomePage> {
                   Text(
                     "Welcome Ray!",
                     style: TextStyle(
-                        fontSize: 24,
-                        color: AppColors.primaryColors,
-                        fontFamily: AppString.normalFontFamily),
+                      fontSize: 24,
+                      color: AppColors.primaryColors,
+                    ),
                   ),
                   Image.asset(AppImages.user)
                 ],
@@ -112,9 +111,9 @@ class _HomePageState extends State<HomePage> {
               child: Text(
                 "How are you feeling?",
                 style: TextStyle(
-                    fontSize: 24,
-                    color: AppColors.primaryColors,
-                    fontFamily: AppString.boldFontFamily),
+                  fontSize: 24,
+                  color: AppColors.primaryColors,
+                ),
               ),
             ),
             SizedBox(
@@ -140,9 +139,9 @@ class _HomePageState extends State<HomePage> {
               child: Text(
                 "Let's Explore",
                 style: TextStyle(
-                    fontSize: 24,
-                    color: AppColors.primaryColors,
-                    fontFamily: AppString.boldFontFamily),
+                  fontSize: 24,
+                  color: AppColors.primaryColors,
+                ),
               ),
             ),
             SizedBox(
@@ -191,9 +190,9 @@ class _HomePageState extends State<HomePage> {
             child: Text(
               title,
               style: TextStyle(
-                  fontSize: 16,
-                  color: Colors.white,
-                  fontFamily: AppString.boldFontFamily),
+                fontSize: 16,
+                color: Colors.white,
+              ),
             ),
           ),
           Positioned(
@@ -204,7 +203,6 @@ class _HomePageState extends State<HomePage> {
               style: TextStyle(
                 fontSize: 14,
                 color: AppColors.primaryColors,
-                fontFamily: AppString.normalFontFamily,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -228,10 +226,7 @@ class _HomePageState extends State<HomePage> {
           ),
           Text(
             title,
-            style: TextStyle(
-                fontFamily: AppString.normalFontFamily,
-                color: AppColors.primaryColors,
-                fontSize: 14),
+            style: TextStyle(color: AppColors.primaryColors, fontSize: 14),
           ),
         ],
       ),

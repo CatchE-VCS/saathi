@@ -4,7 +4,6 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../meditation.dart';
 import '../utils/app_color.dart';
 import '../utils/app_image.dart';
-import '../utils/app_string.dart';
 import 'onboarding_model.dart';
 
 class OnBoardingPage extends StatefulWidget {
@@ -90,7 +89,6 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                   style: TextStyle(
                     fontSize: 28,
                     color: AppColors.primaryColors,
-                    fontFamily: AppString.boldFontFamily,
                   ),
                 ),
                 SizedBox(
@@ -102,11 +100,11 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                     _onBoardingList[index].description,
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18,
-                        fontFamily: AppString.normalFontFamily),
+                      color: Colors.white,
+                      fontSize: 18,
+                    ),
                   ),
-                ),
+                )
               ],
             ),
           );
@@ -157,7 +155,6 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
             style: TextStyle(
               color: Colors.white,
               fontSize: 18,
-              fontFamily: AppString.boldFontFamily,
             ),
           ),
         ),
