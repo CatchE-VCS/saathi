@@ -39,7 +39,7 @@ class Post {
       downloadUrl = '';
     }
     var response = await http.post(
-        Uri.parse("http://saathi-posts-production.up.railway.app/addPost"),
+        Uri.parse("https://saathi-posts-production.up.railway.app/addPost"),
         body: json.encode({
           "name": name,
           "profileUrl": profileUrl,
@@ -65,7 +65,7 @@ class Post {
 
   Future<List<PostModel>> getData() async {
     http.Response response = await http
-        .get(Uri.parse("http://saathi-posts-production.up.railway.app/posts"));
+        .get(Uri.parse("https://saathi-posts-production.up.railway.app/posts"));
     if (response.statusCode == 200) {
       String data = response.body;
       return postsFromJson(data);
