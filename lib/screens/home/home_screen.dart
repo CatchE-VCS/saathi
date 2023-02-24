@@ -81,8 +81,8 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   final user = FirebaseAuth.instance.currentUser;
-  getLikes() async {
-    var like = await LikesController().getLikes(user!.uid);
+  getLikes(String id) async {
+    var like = await LikesController().getLikes(id);
 
     likes = like.likes!;
     print(likes);
@@ -398,7 +398,7 @@ class _HomeScreenState extends State<HomeScreen> {
             onTap: () {
               LikesController().addLike(user!.uid, _post[index].id!);
               setState(() {
-                getLikes();
+                getLikes(_post[index].id!);
               });
               print(_post[index].id!);
             },

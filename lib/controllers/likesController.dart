@@ -22,9 +22,9 @@ class Likes {
 }
 
 class LikesController {
-  Future<Likes> getLikes(String uid) async {
+  Future<Likes> getLikes(String id) async {
     var response = await http.get(
-        Uri.parse("https://saathi-production.up.railway.app/getLikes?id=$uid"));
+        Uri.parse("https://saathi-production.up.railway.app/getLikes?id=$id"));
     if (response.statusCode == 200) {
       String data = response.body;
       return Likes.fromJson(jsonDecode(response.body));
