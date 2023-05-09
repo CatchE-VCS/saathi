@@ -8,7 +8,8 @@ import 'package:saathi/utils/const.dart';
 
 class PostWidget extends StatefulWidget {
   final _pc;
-  PostWidget(this._pc, {super.key});
+  final returnandClose;
+  PostWidget(this._pc, this.returnandClose, {super.key});
 
   @override
   State<PostWidget> createState() => _PostWidgetState();
@@ -67,10 +68,11 @@ class _PostWidgetState extends State<PostWidget> {
                         await Post().addPost(
                             userName, userProfUrl, textController.text, _image);
                         widget._pc.close();
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => HomeScreen()));
+                        widget.returnandClose();
+                        // Navigator.push(
+                        //     context,
+                        //     MaterialPageRoute(
+                        //         builder: (context) => HomeScreen()));
                       },
                       child: Text(
                         "Post",
