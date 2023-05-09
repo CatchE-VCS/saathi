@@ -68,7 +68,6 @@ class _QuotesState extends State<Quotes> {
         body: Center(
           child: Container(
             padding: EdgeInsets.all(10),
-            color: Color(0xffb9b8b8),
             child: Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -78,7 +77,7 @@ class _QuotesState extends State<Quotes> {
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           GestureDetector(
                             onTap: () {
@@ -87,18 +86,20 @@ class _QuotesState extends State<Quotes> {
                                 quote = out;
                               });
                             },
-                            child: Container(
-                              width: 50,
-                              height: 25,
-                              decoration: BoxDecoration(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                  color: Color(0xff101010)),
+                            child: ElevatedButton(
+                              onPressed: () {
+                                trans("en");
+                                setState(() {
+                                  quote = out;
+                                });
+                              },
+                              style: ElevatedButton.styleFrom(
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10))),
                               child: Center(
                                 child: Text(
                                   "ENGLISH",
-                                  style: TextStyle(
-                                      fontSize: 10, color: Color(0xffb9b8b8)),
+                                  style: TextStyle(),
                                 ),
                               ),
                             ),
@@ -113,20 +114,21 @@ class _QuotesState extends State<Quotes> {
                                 quote = out;
                               });
                             },
-                            child: Container(
-                              width: 50,
-                              height: 25,
-                              decoration: BoxDecoration(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                  color: Color(0xff101010)),
-                              child: Center(
-                                  child: Text(
-                                "HINDI",
-                                style: TextStyle(
-                                    fontSize: 12, color: Color(0xffb9b8b8)),
-                              )),
-                            ),
+                            child: ElevatedButton(
+                                onPressed: () {
+                                  trans("hi");
+                                  setState(() {
+                                    quote = out;
+                                  });
+                                },
+                                child: Center(
+                                    child: Text(
+                                  "HINDI",
+                                )),
+                                style: ElevatedButton.styleFrom(
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(10)))),
                           )
                         ],
                       ),
@@ -154,23 +156,12 @@ class _QuotesState extends State<Quotes> {
                   //SizedBox(height: 30,),
                   GestureDetector(
                     onTap: () async => await getQuotes(),
-                    child: Container(
-                      width: 70,
-                      height: 50,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: Color(0xff403f3f),
-                      ),
+                    child: ElevatedButton(
+                      onPressed: () async => await getQuotes(),
                       child: Center(
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                            "Next",
-                            style: TextStyle(
-                                fontFamily: GoogleFonts.poppins().fontFamily,
-                                color: Color(0xffb9b8b8),
-                                fontSize: 18),
-                          ),
+                          child: Text("Next"),
                         ),
                       ),
                     ),
