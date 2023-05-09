@@ -45,6 +45,8 @@ class _HomeScreenState extends State<HomeScreen> {
     _post = await Post().getData();
   }
 
+  int _oldindex = 0;
+
   List ghhh = [
     "Positivity Wall",
     "Hope Chamber",
@@ -127,7 +129,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   );
                 })
-              : _pages[_selectedindex],
+              : _selectedindex == 2
+                  ? _pages[_oldindex]
+                  : _pages[_selectedindex],
           floatingActionButton: FloatingActionButton(
               onPressed: () {
                 Navigator.push(
@@ -149,6 +153,9 @@ class _HomeScreenState extends State<HomeScreen> {
               });
               if (index == 2) {
                 _pc.open();
+              }
+              if (index != 2) {
+                _oldindex = index;
               }
             },
             iconSize: 27,
