@@ -5,11 +5,11 @@ import 'package:responsive_builder/responsive_builder.dart';
 import 'package:saathi/controllers/botController.dart';
 import 'package:saathi/controllers/likesController.dart';
 import 'package:saathi/controllers/postController.dart';
-import 'package:saathi/games/games.dart';
 import 'package:saathi/models/user_post_model.dart';
 import 'package:saathi/screens/hope/hope_screen.dart';
 import 'package:saathi/screens/post/post_screen.dart';
 import 'package:saathi/screens/profile/profile_screen.dart';
+import 'package:saathi/screens/widgets/drawer.dart';
 import 'package:saathi/utils/colors.dart';
 import 'package:saathi/utils/data.dart';
 import 'package:saathi/widgets/custom_buttons.dart';
@@ -105,7 +105,7 @@ class _HomeScreenState extends State<HomeScreen> {
       panel: PostWidget(_pc),
       body: SafeArea(
         child: Scaffold(
-          drawer: _appdrawer(),
+          drawer: appdrawer(context),
           appBar: AppBar(
             centerTitle: true,
             title: Text(ghhh[_selectedindex]),
@@ -390,36 +390,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 isHover: false),
           ),
         ],
-      ),
-    );
-  }
-
-  Widget _appdrawer() {
-    return Drawer(
-      child: Container(
-        color: Colors.deepPurple,
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            ListTile(
-              leading: Icon(
-                Icons.home,
-                color: Colors.black,
-              ),
-              title: Text(
-                "Home",
-                textScaleFactor: 1.2,
-                style: TextStyle(
-                  color: Colors.black,
-                ),
-              ),
-              onTap: () {
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => Games()));
-              },
-            ),
-          ],
-        ),
       ),
     );
   }

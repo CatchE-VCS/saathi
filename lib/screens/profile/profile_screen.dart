@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:saathi/utils/const.dart';
 
@@ -85,7 +86,8 @@ class _MyProfileState extends State<MyProfile> {
                                         color: Colors.black),
                                   ),
                                   Text(
-                                    "j",
+                                    FirebaseAuth
+                                        .instance.currentUser!.displayName!,
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 15,
