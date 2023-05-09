@@ -6,13 +6,12 @@ import 'package:saathi/controllers/botController.dart';
 import 'package:saathi/controllers/likesController.dart';
 import 'package:saathi/controllers/postController.dart';
 import 'package:saathi/games/games.dart';
-import 'package:saathi/hope_screen.dart';
 import 'package:saathi/models/user_post_model.dart';
-import 'package:saathi/screens/post_screen.dart';
-import 'package:saathi/screens/profile_screen.dart';
+import 'package:saathi/screens/hope/hope_screen.dart';
+import 'package:saathi/screens/post/post_screen.dart';
+import 'package:saathi/screens/profile/profile_screen.dart';
 import 'package:saathi/utils/colors.dart';
 import 'package:saathi/utils/data.dart';
-import 'package:saathi/widgets/custom_app_bar.dart';
 import 'package:saathi/widgets/custom_buttons.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
@@ -41,6 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
   int like = 0;
   int likes = 0;
   int _selectedindex = 0;
+
   void getAllPosts() async {
     _post = await Post().getData();
   }
@@ -52,6 +52,7 @@ class _HomeScreenState extends State<HomeScreen> {
     "Meditation Dome",
     "Profile"
   ];
+
   @override
   void initState() {
     getAllPosts();
@@ -104,33 +105,7 @@ class _HomeScreenState extends State<HomeScreen> {
       panel: PostWidget(_pc),
       body: SafeArea(
         child: Scaffold(
-          drawer: Drawer(
-            child: Container(
-              color: Colors.deepPurple,
-              child: ListView(
-                padding: EdgeInsets.zero,
-                children: [
-                  ListTile(
-                    leading: Icon(
-                      Icons.home,
-                      color: Colors.black,
-                    ),
-                    title: Text(
-                      "Home",
-                      textScaleFactor: 1.2,
-                      style: TextStyle(
-                        color: Colors.black,
-                      ),
-                    ),
-                    onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Games()));
-                    },
-                  ),
-                ],
-              ),
-            ),
-          ),
+          drawer: _appdrawer(),
           appBar: AppBar(
             centerTitle: true,
             title: Text(ghhh[_selectedindex]),
@@ -147,14 +122,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     color: Colors.black12,
                     child: Column(
                       children: [
-                        _showAppNavBar
-                            ? CustomAppBar(
-                                sizingInformation: sizingInformation,
-                              )
-                            : Container(
-                                height: 0.0,
-                                width: 0.0,
-                              ),
                         _listPostWidget(sizingInformation),
                       ],
                     ),
@@ -180,21 +147,9 @@ class _HomeScreenState extends State<HomeScreen> {
               setState(() {
                 _selectedindex = index;
               });
-              // if (index == 1) {
-              //   Navigator.push(
-              //       context, MaterialPageRoute(builder: (context) => Quotes()));
-              // }
-              // if (index == 4) {
-              //   Navigator.push(context,
-              //       MaterialPageRoute(builder: (context) => MyProfile()));
-              // }
               if (index == 2) {
                 _pc.open();
               }
-              // if (index == 3) {
-              //   Navigator.push(context,
-              //       MaterialPageRoute(builder: (context) => OnBoardingPage()));
-              // }
             },
             iconSize: 27,
             selectedItemColor: Colors.black87,
@@ -258,10 +213,20 @@ class _HomeScreenState extends State<HomeScreen> {
               padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 15),
               margin: const EdgeInsets.only(bottom: 0.0, top: 8),
               decoration: const BoxDecoration(
-                  color: Colors.white,
-                  border: Border(
-                      top: BorderSide(color: Colors.black54, width: 0.50),
-                      bottom: BorderSide(color: Colors.black54, width: 0.50))),
+                gradient: LinearGradient(
+                    colors: [
+                      Color(0xffbec9fb),
+                      Color(0xffbfc8f9),
+                      Color(0xffb9a9da),
+                      Color(0xffbb9dcc)
+                    ],
+                    begin: FractionalOffset.topCenter,
+                    end: FractionalOffset.bottomCenter),
+                border: Border(
+                  top: BorderSide(color: Colors.black54, width: 0.50),
+                  bottom: BorderSide(color: Colors.black54, width: 0.50),
+                ),
+              ),
               child: Column(
                 children: [
                   Row(
@@ -269,13 +234,17 @@ class _HomeScreenState extends State<HomeScreen> {
                       Container(
                         width: 50,
                         height: 50,
-                        decoration: BoxDecoration(
-                            // borderRadius: BorderRadius.all(Radius.circular(0)),
-                            image: DecorationImage(
-                                image: AssetImage(_post[index].profileUrl!))),
+                        // decoration: BoxDecoration(
+                        //     // borderRadius: BorderRadius.all(Radius.circular(0)),
+                        //     image: DecorationImage(
+                        //
+                        //         image: AssetImage(_post[index].profileUrl!))),
+                        child: CircleAvatar(
+                          backgroundImage: AssetImage(_post[index].profileUrl!),
+                        ),
                       ),
                       const SizedBox(
-                        width: 4,
+                        width: 10,
                       ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -283,14 +252,16 @@ class _HomeScreenState extends State<HomeScreen> {
                           Text(
                             _post[index].name!,
                             style: const TextStyle(
-                                fontSize: 18, fontWeight: FontWeight.bold),
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                           Container(
                             width: sizingInformation.screenSize.width / 1.34,
                             child: Text(
                               _post[index].headline!,
                               style: const TextStyle(
-                                  fontSize: 12, color: Colors.black54),
+                                  fontSize: 14, color: Colors.black54),
                               overflow: TextOverflow.ellipsis,
                             ),
                           ),
@@ -303,7 +274,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   Text(
                     _post[index].description!,
-                    style: TextStyle(fontSize: 14),
+                    style: TextStyle(
+                      fontSize: 14,
+                    ),
                   ),
                   Text(
                     _post[index].tags!,
@@ -425,6 +398,36 @@ class _HomeScreenState extends State<HomeScreen> {
                 isHover: false),
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _appdrawer() {
+    return Drawer(
+      child: Container(
+        color: Colors.deepPurple,
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            ListTile(
+              leading: Icon(
+                Icons.home,
+                color: Colors.black,
+              ),
+              title: Text(
+                "Home",
+                textScaleFactor: 1.2,
+                style: TextStyle(
+                  color: Colors.black,
+                ),
+              ),
+              onTap: () {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => Games()));
+              },
+            ),
+          ],
+        ),
       ),
     );
   }

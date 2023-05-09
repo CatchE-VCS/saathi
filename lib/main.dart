@@ -9,7 +9,7 @@ import 'package:saathi/firebase_options.dart';
 import 'package:saathi/screens/auth/login_screen.dart';
 import 'package:saathi/screens/auth/signup_screen.dart';
 import 'package:saathi/screens/home/home_screen.dart';
-import 'package:saathi/screens/splash_screens/components/splash_screen.dart';
+import 'package:saathi/screens/splash/splash_screen.dart';
 import 'package:saathi/utils/const.dart';
 
 void main() async {

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:saathi/screens/auth/login_screen.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-import '../../../models/onboarding_model.dart';
-import '../../../utils/app_color.dart';
+import '../../models/onboarding_model.dart';
+import '../../utils/app_color.dart';
 
 class Body extends StatefulWidget {
   const Body({Key? key}) : super(key: key);

@@ -67,8 +67,10 @@ class DefaultFirebaseOptions {
     messagingSenderId: '544423238849',
     projectId: 'saathi-85757',
     storageBucket: 'saathi-85757.appspot.com',
-    androidClientId: '544423238849-06fllqn8pemosgpegdmliop6ju8muhnr.apps.googleusercontent.com',
-    iosClientId: '544423238849-rpfdr9lh3jj983gejkuk0ribrctftcqd.apps.googleusercontent.com',
+    androidClientId:
+        '544423238849-06fllqn8pemosgpegdmliop6ju8muhnr.apps.googleusercontent.com',
+    iosClientId:
+        '544423238849-rpfdr9lh3jj983gejkuk0ribrctftcqd.apps.googleusercontent.com',
     iosBundleId: 'com.example.saathi',
   );
 
@@ -78,8 +80,10 @@ class DefaultFirebaseOptions {
     messagingSenderId: '544423238849',
     projectId: 'saathi-85757',
     storageBucket: 'saathi-85757.appspot.com',
-    androidClientId: '544423238849-06fllqn8pemosgpegdmliop6ju8muhnr.apps.googleusercontent.com',
-    iosClientId: '544423238849-rpfdr9lh3jj983gejkuk0ribrctftcqd.apps.googleusercontent.com',
+    androidClientId:
+        '544423238849-06fllqn8pemosgpegdmliop6ju8muhnr.apps.googleusercontent.com',
+    iosClientId:
+        '544423238849-rpfdr9lh3jj983gejkuk0ribrctftcqd.apps.googleusercontent.com',
     iosBundleId: 'com.example.saathi',
   );
 }

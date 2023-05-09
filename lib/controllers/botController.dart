@@ -33,7 +33,6 @@ class _HomeState extends State<Home> {
               TextStyle(color: Color(0xFFFFD495), fontWeight: FontWeight.bold),
         ),
         backgroundColor: Color(0xFFFAAB78),
-
       ),
       body: Container(
         child: Column(
@@ -54,8 +53,6 @@ class _HomeState extends State<Home> {
                       labelStyle: TextStyle(color: Colors.black87),
                       filled: true,
                       fillColor: Color(0xFFFFD495),
-                      // labelStyle:
-                      //     TextStyle(fontFamily: GoogleFonts.poppins().fontFamily),
                     ),
                   )),
                   IconButton(
