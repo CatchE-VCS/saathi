@@ -92,6 +92,12 @@ class _HomeScreenState extends State<HomeScreen> {
     setState(() {});
   }
 
+  void setcurrentIndex() {
+    setState(() {
+      _selectedindex = _oldindex;
+    });
+  }
+
   @override
   void dispose() {
     _scrollController.dispose();
@@ -104,7 +110,7 @@ class _HomeScreenState extends State<HomeScreen> {
       minHeight: 0,
       maxHeight: MediaQuery.of(context).size.height - 100,
       controller: _pc,
-      panel: PostWidget(_pc),
+      panel: PostWidget(_pc, setcurrentIndex),
       body: SafeArea(
         child: Scaffold(
           drawer: appdrawer(context),
@@ -190,12 +196,13 @@ class _HomeScreenState extends State<HomeScreen> {
                 label: "Meditation",
               ),
               BottomNavigationBarItem(
-                  icon: Icon(Icons.circle_outlined),
-                  label: "Profile",
-                  activeIcon: Icon(
-                    Icons.circle_outlined,
-                    color: Colors.black87,
-                  )),
+                icon: Icon(Icons.circle_outlined),
+                label: "Profile",
+                activeIcon: Icon(
+                  Icons.circle_outlined,
+                  color: Colors.black87,
+                ),
+              ),
             ],
           ),
         ),
