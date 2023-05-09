@@ -213,15 +213,7 @@ class _HomeScreenState extends State<HomeScreen> {
               padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 15),
               margin: const EdgeInsets.only(bottom: 0.0, top: 8),
               decoration: const BoxDecoration(
-                gradient: LinearGradient(
-                    colors: [
-                      Color(0xffbec9fb),
-                      Color(0xffbfc8f9),
-                      Color(0xffb9a9da),
-                      Color(0xffbb9dcc)
-                    ],
-                    begin: FractionalOffset.topCenter,
-                    end: FractionalOffset.bottomCenter),
+                color: Colors.white,
                 border: Border(
                   top: BorderSide(color: Colors.black54, width: 0.50),
                   bottom: BorderSide(color: Colors.black54, width: 0.50),
