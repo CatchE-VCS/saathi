@@ -56,6 +56,7 @@ dependencies:
   animated_text_kit: ^4.2.2
   webview_flutter: ^4.0.5
   translator: ^0.1.7
+  sendbird_sdk: ^3.2.11
 
 dev_dependencies:
   flutter_test:

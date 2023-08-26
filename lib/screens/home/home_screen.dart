@@ -110,6 +110,17 @@ class _HomeScreenState extends State<HomeScreen> {
       minHeight: 0,
       maxHeight: MediaQuery.of(context).size.height - 100,
       controller: _pc,
+      onPanelClosed: () {
+        setState(() {
+          _selectedindex = _oldindex;
+        });
+      },
+      onPanelSlide: (double pos) {
+        setState(() {
+          _selectedindex = _oldindex;
+        });
+        _pc.close();
+      },
       panel: PostWidget(_pc, setcurrentIndex),
       body: SafeArea(
         child: Scaffold(
